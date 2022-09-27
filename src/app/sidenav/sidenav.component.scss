@@ -1,0 +1,27 @@
+img {
+  width: 150px;
+}
+
+.dropdown-toggle {
+  outline: 0;
+}
+
+
+.container {
+  position: relative;
+}
+
+.bottomleft {
+  position: absolute;
+  bottom: -500px;
+  left: 20px;
+  font-size: 18px;
+}
+
+hr {
+  margin: 1rem 0;
+  color: inherit;
+  background-color: currentColor;
+  border: 0;
+  opacity: .25;
+}

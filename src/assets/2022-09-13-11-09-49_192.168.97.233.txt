@@ -1,0 +1,2734 @@
+configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW3(config)#exit
+SW3#term leng 0
+SW3#show inventory
+SW3#show clock
+*16:03:38.349 UTC Mon Sep 12 2022
+SW3#show ntp associations
+SW3#show version
+Cisco IOS Software, vios_l2 Software (vios_l2-ADVENTERPRISEK9-M), Experimental Version 15.2(20170321:233949) [mmen 101]
+Copyright (c) 1986-2017 by Cisco Systems, Inc.
+Compiled Wed 22-Mar-17 08:38 by mmen
+
+
+ROM: Bootstrap program is IOSv
+
+SW3 uptime is 1 hour, 40 minutes
+System returned to ROM by reload
+System image file is "flash0:/vios_l2-adventerprisek9-m"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Cisco IOSv () processor (revision 1.0) with 935289K/111616K bytes of memory.
+Processor board ID 9NK0ZYXHFMC
+1 Virtual Ethernet interface
+8 Gigabit Ethernet interfaces
+DRAM configuration is 72 bits wide with parity disabled.
+256K bytes of non-volatile configuration memory.
+2097152K bytes of ATA System CompactFlash 0 (Read/Write)
+0K bytes of ATA CompactFlash 1 (Read/Write)
+0K bytes of ATA CompactFlash 2 (Read/Write)
+0K bytes of ATA CompactFlash 3 (Read/Write)
+
+Configuration register is 0x101
+
+SW3#show running-config
+Building configuration...
+
+Current configuration : 3188 bytes
+!
+! Last configuration change at 16:03:38 UTC Mon Sep 12 2022 by admin
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname SW3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$JM9P$PTjni26d.C0aAMWXWp8Ie/
+!
+username admin password 0 admin
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain-name switch2
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ media-type rj45
+ negotiation auto
+!
+interface Vlan1
+ ip address 192.168.97.233 255.255.255.0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+!
+line con 0
+ login local
+line aux 0
+line vty 0 4
+ login local
+ transport input all
+!
+!
+end
+
+SW3#show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet0/0     unassigned      YES unset  up                    up      
+GigabitEthernet0/1     unassigned      YES unset  up                    up      
+GigabitEthernet0/2     unassigned      YES unset  up                    up      
+GigabitEthernet0/3     unassigned      YES unset  up                    up      
+GigabitEthernet1/0     unassigned      YES unset  up                    up      
+GigabitEthernet1/1     unassigned      YES unset  up                    up      
+GigabitEthernet1/2     unassigned      YES unset  up                    up      
+GigabitEthernet1/3     unassigned      YES unset  up                    up      
+Vlan1                  192.168.97.233  YES NVRAM  up                    up      
+SW3#show interface status
+
+Port      Name               Status       Vlan       Duplex  Speed Type 
+Gi0/0                        connected    1          a-full   auto RJ45
+Gi0/1                        connected    1          a-full   auto RJ45
+Gi0/2                        connected    1          a-full   auto RJ45
+Gi0/3                        connected    1          a-full   auto RJ45
+Gi1/0                        connected    1          a-full   auto RJ45
+Gi1/1                        connected    1          a-full   auto RJ45
+Gi1/2                        connected    1          a-full   auto RJ45
+Gi1/3                        connected    1          a-full   auto RJ45
+SW3#show cdp neighbor
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+Switch.switch    Gig 0/0           171             R S I            Gig 0/0
+R2.router        Gig 0/0           135             R S I  3725      Fas 0/0
+
+Total cdp entries displayed : 2
+SW3#show cdp neighbor detail
+-------------------------
+Device ID: Switch.switch
+Entry address(es): 
+  IP address: 192.168.97.100
+Platform: Cisco ,  Capabilities: Router Switch IGMP 
+Interface: GigabitEthernet0/0,  Port ID (outgoing port): GigabitEthernet0/0
+Holdtime : 171 sec
+
+Version :
+Cisco IOS Software, vios_l2 Software (vios_l2-ADVENTERPRISEK9-M), Experimental Version 15.2(20170321:233949) [mmen 101]
+Copyright (c) 1986-2017 by Cisco Systems, Inc.
+Compiled Wed 22-Mar-17 08:38 by mmen
+
+advertisement version: 2
+VTP Management Domain: ''
+Native VLAN: 1
+Duplex: full
+Management address(es): 
+  IP address: 192.168.97.100
+
+-------------------------
+Device ID: R2.router
+Entry address(es): 
+  IP address: 192.168.97.55
+Platform: Cisco 3725,  Capabilities: Router Switch IGMP 
+Interface: GigabitEthernet0/0,  Port ID (outgoing port): FastEthernet0/0
+Holdtime : 135 sec
+
+Version :
+Cisco IOS Software, 3700 Software (C3725-ADVENTERPRISEK9-M), Version 12.4(15)T14, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2010 by Cisco Systems, Inc.
+Compiled Tue 17-Aug-10 12:08 by prod_rel_team
+
+advertisement version: 2
+VTP Management Domain: ''
+Duplex: half (Mismatch)
+
+
+Total cdp entries displayed : 2
+SW3#show environment all
+           ^
+% Invalid input detected at '^' marker.
+
+SW3#show systems resources
+          ^
+% Invalid input detected at '^' marker.
+
+SW3#show processes cpu sorted
+CPU utilization for five seconds: 5%/0%; one minute: 6%; five minutes: 6%
+ PID Runtime(ms)     Invoked      uSecs   5Sec   1Min   5Min TTY Process 
+  62      194377      292935        663  3.67%  3.36%  3.27%   0 IOSv e1000       
+   3         920         201       4577  0.55%  0.04%  0.00%   2 SSH Process      
+ 280       14878        6054       2457  0.31%  0.36%  0.39%   0 Per-Second Jobs  
+  70       12204      752705         16  0.23%  0.25%  0.22%   0 Ethernet Msec Ti 
+ 122        3043        3317        917  0.23%  0.22%  0.40%   0 IP Input         
+ 128       20384       20436        997  0.15%  0.33%  0.34%   0 Spanning Tree    
+   4         785         818        959  0.07%  0.00%  0.00%   0 Check heaps      
+  69         405       28289         14  0.07%  0.01%  0.00%   0 Ethernet Timer C 
+  60          31         353         87  0.07%  0.03%  0.00%   0 Transport Port A 
+ 218        1211        6047        200  0.07%  0.03%  0.00%   0 Crypto IKEv2     
+ 121        3487      188086         18  0.07%  0.07%  0.07%   0 IP ARP Retry Age 
+  83        8647       94363         91  0.07%  0.07%  0.10%   0 VRRS Main thread 
+  12           0           1          0  0.00%  0.00%  0.00%   0 Exception contro 
+  13           0           1          0  0.00%  0.00%  0.00%   0 IFS Agent Manage 
+  15         664        6319        105  0.00%  0.00%  0.00%   0 ARP Background   
+  14          47          86        546  0.00%  0.00%  0.00%   0 ARP Input        
+  17           0           1          0  0.00%  0.00%  0.00%   0 AAA_SERVER_DEADT 
+  11           0           1          0  0.00%  0.00%  0.00%   0 Crash writer     
+  19           1           2        500  0.00%  0.00%  0.00%   0 DDR Timers       
+  20           0           2          0  0.00%  0.00%  0.00%   0 Dialer event     
+  10        3736       68268         54  0.00%  0.04%  0.04%   0 IOSv in console  
+   9           0           2          0  0.00%  0.00%  0.00%   0 IOSv out console 
+  16           1           1       1000  0.00%  0.00%  0.00%   0 CEF MIB API      
+  18           0           1          0  0.00%  0.00%  0.00%   0 Policy Manager   
+  25           0           1          0  0.00%  0.00%  0.00%   0 IPC Session Serv 
+  26           0           1          0  0.00%  0.00%  0.00%   0 IPC Zone Manager 
+  21           0           1          0  0.00%  0.00%  0.00%   0 Entity MIB API   
+  28         152        5907         25  0.00%  0.00%  0.00%   0 IPC Deferred Por 
+  29           0           1          0  0.00%  0.00%  0.00%   0 IPC Process leve 
+  30           0           1          0  0.00%  0.00%  0.00%   0 IPC Seat Manager 
+  31           4         346         11  0.00%  0.00%  0.00%   0 IPC Check Queue  
+  32           0           1          0  0.00%  0.00%  0.00%   0 IPC Seat RX Cont 
+  33           0           1          0  0.00%  0.00%  0.00%   0 IPC Seat TX Cont 
+  22          22        1211         18  0.00%  0.00%  0.00%   0 IPC Event Notifi 
+  35          39        1211         32  0.00%  0.00%  0.00%   0 IPC Loadometer   
+  23         138        5907         23  0.00%  0.00%  0.00%   0 IPC Mcast Pendin 
+  24           1         101          9  0.00%  0.00%  0.00%   0 IPC Dynamic Cach 
+  38           1           2        500  0.00%  0.00%  0.00%   0 Serial Backgroun 
+  27         206        5907         34  0.00%  0.00%  0.00%   0 IPC Periodic Tim 
+  40         475        6049         78  0.00%  0.00%  0.00%   0 Dynamic ARP Insp 
+  41          96          31       3096  0.00%  0.00%  0.00%   0 crypto sw pk pro 
+  42         122        6045         20  0.00%  0.00%  0.00%   0 GraphIt          
+  43           0           1          0  0.00%  0.00%  0.00%   0 SERIAL A'detect  
+  44           0           1          0  0.00%  0.00%  0.00%   0 Inode Table Dest 
+  45           0           1          0  0.00%  0.00%  0.00%   0 dev_device_inser 
+  34          26         606         42  0.00%  0.00%  0.00%   0 IPC Keep Alive M 
+  47         159         166        957  0.00%  0.00%  0.00%   3 SSH Process      
+  48           0           1          0  0.00%  0.00%  0.00%   0 Async write proc 
+  49           0           1          0  0.00%  0.00%  0.00%   0 Async write proc 
+  50           0           1          0  0.00%  0.00%  0.00%   0 Async write proc 
+  51           0         101          0  0.00%  0.00%  0.00%   0 DFS flush period 
+  52           1           1       1000  0.00%  0.00%  0.00%   0 Critical Bkgnd   
+  53          92         611        150  0.00%  0.00%  0.00%   0 Net Background   
+  54           5           2       2500  0.00%  0.00%  0.00%   0 IDB Work         
+  55          28         119        235  0.00%  0.00%  0.00%   0 Logger           
+  56        1190        6039        197  0.00%  0.01%  0.00%   0 TTY Background   
+  57          20           3       6666  0.00%  0.00%  0.00%   0 IF-MGR control p 
+  58           3           3       1000  0.00%  0.00%  0.00%   0 IF-MGR event pro 
+  59           1           1       1000  0.00%  0.00%  0.00%   0 AggMgr Process   
+  36           0           1          0  0.00%  0.00%  0.00%   0 IPC Session Deta 
+   8          16         304         52  0.00%  0.00%  0.00%   0 WATCH_AFS        
+   7           0           2          0  0.00%  0.00%  0.00%   0 Timers           
+   6           1           1       1000  0.00%  0.00%  0.00%   0 DiscardQ Backgro 
+  37           0           3          0  0.00%  0.00%  0.00%   0 PrstVbl          
+  39           0           2          0  0.00%  0.00%  0.00%   0 ARP Snoop        
+  66          49         296        165  0.00%  0.00%  0.00%   0 EEM ED ND        
+  67          19        1210         15  0.00%  0.00%  0.00%   0 Rate limit load  
+   5          49         201        243  0.00%  0.00%  0.00%   0 Pool Manager     
+  46           0           1          0  0.00%  0.00%  0.00%   0 dev_device_remov 
+   2          27        1210         22  0.00%  0.00%  0.00%   0 Load Meter       
+  71           2           2       1000  0.00%  0.00%  0.00%   0 Ethernet CFM IOU 
+  72           1           2        500  0.00%  0.00%  0.00%   0 Dot1x Mgr Proces 
+  73           0           1          0  0.00%  0.00%  0.00%   0 EAP Framework    
+  74           0           1          0  0.00%  0.00%  0.00%   0 EAP Test         
+  75           3          30        100  0.00%  0.00%  0.00%   0 AAA Server       
+  76           0           1          0  0.00%  0.00%  0.00%   0 AAA ACCT Proc    
+  77           1           1       1000  0.00%  0.00%  0.00%   0 ACCT Periodic Pr 
+  78           0           1          0  0.00%  0.00%  0.00%   0 AAA System Acct  
+  79           2           2       1000  0.00%  0.00%  0.00%   0 EFP Errd         
+  80           1           2        500  0.00%  0.00%  0.00%   0 Ethernet LMI     
+  81         724        6048        119  0.00%  0.00%  0.00%   0 FHRP Main thread 
+  82           2           1       2000  0.00%  0.00%  0.00%   0 VRRP Main thread 
+  64          23           3       7666  0.00%  0.00%  0.00%   0 EEM ED Identity  
+  84        1273         514       2476  0.00%  0.00%  0.00%   4 SSH Process      
+  85         546        6065         90  0.00%  0.00%  0.00%   0 mDNS             
+  86           0           1          0  0.00%  0.00%  0.00%   0 SSS Manager      
+  87           0           1          0  0.00%  0.00%  0.00%   0 SSS Feature Mana 
+  88         399       23629         16  0.00%  0.00%  0.00%   0 SSS Feature Time 
+  89           1           2        500  0.00%  0.00%  0.00%   0 Ethernet OAM Pro 
+  90           0           1          0  0.00%  0.00%  0.00%   0 AC Switch        
+  91           5           4       1250  0.00%  0.00%  0.00%   0 SSM connection m 
+  92           0           2          0  0.00%  0.00%  0.00%   0 OCE punted Pkts  
+  93           0           1          0  0.00%  0.00%  0.00%   0 LSP Tunnel FRR   
+  94           0           1          0  0.00%  0.00%  0.00%   0 MPLS Auto-Tunnel 
+  95           0           1          0  0.00%  0.00%  0.00%   0 O-UNI Client Msg 
+  96           4          51         78  0.00%  0.00%  0.00%   0 DHCP Snooping    
+  97           0           1          0  0.00%  0.00%  0.00%   0 DHCP Snooping db 
+  98           2           2       1000  0.00%  0.00%  0.00%   0 802.1x switch    
+  99        3308        1419       2331  0.00%  0.03%  0.03%   0 DTP Protocol     
+ 100         351        6043         58  0.00%  0.00%  0.00%   0 PI MATM Aging Pr 
+ 101           2         101         19  0.00%  0.00%  0.00%   0 Port-Security    
+ 102           2           2       1000  0.00%  0.00%  0.00%   0 IP Host Track Pr 
+ 103          11         607         18  0.00%  0.00%  0.00%   0 Ethchnl          
+ 104        3315       60406         54  0.00%  0.00%  0.00%   0 UDLD             
+ 105           1           1       1000  0.00%  0.00%  0.00%   0 UNIX IP Source g 
+ 106           2         102         19  0.00%  0.00%  0.00%   0 process unix_l2_ 
+  61         104        1211         85  0.00%  0.00%  0.00%   0 HC Counter Timer 
+ 108           3           6        500  0.00%  0.00%  0.00%   0 VMATM Callback   
+ 109           0           2          0  0.00%  0.00%  0.00%   0 CEF switching ba 
+ 110           0           1          0  0.00%  0.00%  0.00%   0 ADJ NSF process  
+ 111           1          12         83  0.00%  0.00%  0.00%   0 SpanTree Helper  
+ 112        1156        1468        787  0.00%  0.00%  0.00%   0 CDP Protocol     
+ 114           1           2        500  0.00%  0.00%  0.00%   0 AAA Dictionary R 
+ 115           2           1       2000  0.00%  0.00%  0.00%   0 TRACK Main threa 
+ 116           1           1       1000  0.00%  0.00%  0.00%   0 TRACK Client thr 
+ 117           1           2        500  0.00%  0.00%  0.00%   0 ATM OAM Input    
+ 118           0           2          0  0.00%  0.00%  0.00%   0 ATM OAM TIMER    
+ 119           1           1       1000  0.00%  0.00%  0.00%   0 HQF TARGET DYNAM 
+ 120           4           4       1000  0.00%  0.00%  0.00%   0 IP ARP Adjacency 
+  65           2           4        500  0.00%  0.00%  0.00%   0 EEM ED MAT       
+  63           0           1          0  0.00%  0.00%  0.00%   0 Src Fltr backgro 
+ 123           1           1       1000  0.00%  0.00%  0.00%   0 ICMP event handl 
+ 124         323       11800         27  0.00%  0.00%  0.00%   0 IP ARP Track     
+ 125           2           3        666  0.00%  0.00%  0.00%   0 PIM register asy 
+ 127           1           2        500  0.00%  0.00%  0.00%   0 RIB LM VALIDATE  
+  68           1           2        500  0.00%  0.00%  0.00%   0 Ethernet CFM     
+ 129           0           4          0  0.00%  0.00%  0.00%   0 SpanTree Msg     
+ 130           1           1       1000  0.00%  0.00%  0.00%   0 Webauth client   
+ 131           0           1          0  0.00%  0.00%  0.00%   0 Auth-proxy HTTP  
+ 132           0           1          0  0.00%  0.00%  0.00%   0 IP Admin SM Proc 
+ 133           1           1       1000  0.00%  0.00%  0.00%   0 IPv6 ping proces 
+ 134           1           2        500  0.00%  0.00%  0.00%   0 KRB5 AAA         
+ 135           0         101          0  0.00%  0.00%  0.00%   0 FRR Background P 
+ 136          37         213        173  0.00%  0.00%  0.00%   0 CEF background p 
+ 137           1           1       1000  0.00%  0.00%  0.00%   0 fib_fib_bfd_sb e 
+   1           1           5        200  0.00%  0.00%  0.00%   0 Chunk Manager    
+ 139           0           1          0  0.00%  0.00%  0.00%   0 Tunnel FIB       
+ 107           0           2          0  0.00%  0.00%  0.00%   0 process unix_l2_ 
+ 141           0           1          0  0.00%  0.00%  0.00%   0 EPM MAIN PROCESS 
+ 142           0           1          0  0.00%  0.00%  0.00%   0 Critical Auth    
+ 143         358       12170         29  0.00%  0.00%  0.00%   0 SVM UT Process   
+ 144           0           1          0  0.00%  0.00%  0.00%   0 CMD HANDLER      
+ 145           0           2          0  0.00%  0.00%  0.00%   0 Dot1x Supplicant 
+ 146           2           2       1000  0.00%  0.00%  0.00%   0 Dot1x Supplicant 
+ 147           0           2          0  0.00%  0.00%  0.00%   0 Dot1x Supplicant 
+ 148           0           1          0  0.00%  0.00%  0.00%   0 DCT Bkgd Process 
+ 149           0           1          0  0.00%  0.00%  0.00%   0 MAB Framework    
+ 150           0           1          0  0.00%  0.00%  0.00%   0 PPP IP Add Route 
+ 151           1           3        333  0.00%  0.00%  0.00%   0 Service Routing  
+ 152           1           2        500  0.00%  0.00%  0.00%   0 HQF Output Shape 
+ 153           0           2          0  0.00%  0.00%  0.00%   0 HQF Input Shaper 
+ 154           0           2          0  0.00%  0.00%  0.00%   0 Routing Topology 
+ 155           1           4        250  0.00%  0.00%  0.00%   0 IP RIB Update    
+ 156          14         104        134  0.00%  0.00%  0.00%   0 IP Background    
+ 157           3           6        500  0.00%  0.00%  0.00%   0 IP Connected Rou 
+ 158           1           4        250  0.00%  0.00%  0.00%   0 Flow Exporter Ti 
+ 159           0           1          0  0.00%  0.00%  0.00%   0 XC RIB MGR       
+ 160           0           4          0  0.00%  0.00%  0.00%   0 Inter Chassis Pr 
+ 161           1           2        500  0.00%  0.00%  0.00%   0 Tunnel           
+ 162           0           2          0  0.00%  0.00%  0.00%   0 LFDp Input Proc  
+ 163          74         882         83  0.00%  0.00%  0.00%   0 TCP Timer        
+ 164         287         702        408  0.00%  0.00%  0.04%   0 TCP Protocols    
+ 165           1           1       1000  0.00%  0.00%  0.00%   0 Socket Timers    
+ 166           3          21        142  0.00%  0.00%  0.00%   0 HTTP CORE        
+ 167           2           3        666  0.00%  0.00%  0.00%   0 L2TRACE SERVER   
+ 168           0           2          0  0.00%  0.00%  0.00%   0 AUTO LAG Protoco 
+ 169           5          10        500  0.00%  0.00%  0.00%   0 IGMPSN L2MCM     
+ 170           0           1          0  0.00%  0.00%  0.00%   0 IGMPSN MRD       
+ 171          20         113        176  0.00%  0.00%  0.00%   0 IGMPSN           
+ 172         224        3025         74  0.00%  0.01%  0.00%   0 CEF: IPv4 proces 
+ 173         644        6046        106  0.00%  0.00%  0.00%   0 ADJ background   
+ 174           1           3        333  0.00%  0.00%  0.00%   0 Collection proce 
+ 175           1           2        500  0.00%  0.00%  0.00%   0 ADJ resolve proc 
+ 176          12           7       1714  0.00%  0.00%  0.00%   0 SR CapMan Proces 
+ 177           2           3        666  0.00%  0.00%  0.00%   0 MFIB Master back 
+ 178           0           5          0  0.00%  0.00%  0.00%   0 SSH Event handle 
+ 180           0           2          0  0.00%  0.00%  0.00%   0 ATIP_UDP_TSK     
+ 181           1           1       1000  0.00%  0.00%  0.00%   0 COPS             
+ 182           0           1          0  0.00%  0.00%  0.00%   0 Probe Input      
+ 183           4           2       2000  0.00%  0.00%  0.00%   0 MVPN Mgr Process 
+ 184           1           2        500  0.00%  0.00%  0.00%   0 Multicast Offloa 
+ 185           0           1          0  0.00%  0.00%  0.00%   0 RARP Input       
+ 186           1           3        333  0.00%  0.00%  0.00%   0 static           
+ 187           1           2        500  0.00%  0.00%  0.00%   0 App Route Proces 
+ 188           1           1       1000  0.00%  0.00%  0.00%   0 IPv6 RIB Cleanup 
+ 189           1           1       1000  0.00%  0.00%  0.00%   0 IPv6 RIB Event H 
+ 190           1           1       1000  0.00%  0.00%  0.00%   0 PAD InCall       
+ 191           0           2          0  0.00%  0.00%  0.00%   0 X.25 Background  
+ 192           0           1          0  0.00%  0.00%  0.00%   0 X.25 Encaps Mana 
+ 193          10         601         16  0.00%  0.00%  0.00%   0 QoS stats proces 
+ 194           0           1          0  0.00%  0.00%  0.00%   0 SNMP Timers      
+ 195           0           1          0  0.00%  0.00%  0.00%   0 EPM Downlad Mana 
+ 196           1           1       1000  0.00%  0.00%  0.00%   0 Timer Handler Pr 
+ 197         105        1211         86  0.00%  0.00%  0.00%   0 EPM ACL PLUG-IN  
+ 198           0           1          0  0.00%  0.00%  0.00%   0 IPv6 Static Hand 
+ 199           1           2        500  0.00%  0.00%  0.00%   0 AAA Cached Serve 
+ 200           1           2        500  0.00%  0.00%  0.00%   0 LINE AAA         
+ 201        8717       94363         92  0.00%  0.21%  0.17%   0 MMA DB TIMER     
+ 202           1           1       1000  0.00%  0.00%  0.00%   0 MMA MSG MCOL     
+ 203           0           2          0  0.00%  0.00%  0.00%   0 TPLUS            
+ 204           1           2        500  0.00%  0.00%  0.00%   0 ENABLE AAA       
+ 205           6          31        193  0.00%  0.00%  0.00%   0 LOCAL AAA        
+ 206           0           3          0  0.00%  0.00%  0.00%   0 MPLS Auto Mesh P 
+ 207         220       11800         18  0.00%  0.00%  0.00%   0 Timer Library    
+ 208           1           2        500  0.00%  0.00%  0.00%   0 Crypto Support   
+ 209           1           1       1000  0.00%  0.00%  0.00%   0 IPSECv6 PS Proc  
+ 210           4           2       2000  0.00%  0.00%  0.00%   0 NIST rng proc    
+ 211           0           3          0  0.00%  0.00%  0.00%   0 LDAP process     
+ 212           0           1          0  0.00%  0.00%  0.00%   0 Opaque Database  
+ 213           0           1          0  0.00%  0.00%  0.00%   0 Key chain liveke 
+ 215        8750       94364         92  0.00%  0.14%  0.13%   0 MMA DP TIMER     
+ 216           2           2       1000  0.00%  0.00%  0.00%   0 MMON PROCESS     
+ 217        1778      188779          9  0.00%  0.14%  0.15%   0 MMON MENG        
+ 138           1           1       1000  0.00%  0.00%  0.00%   0 IP IRDP          
+ 219           1           1       1000  0.00%  0.00%  0.00%   0 IKEv2 AAA handle 
+ 220           6          11        545  0.00%  0.00%  0.00%   0 crypto engine pr 
+ 221           1           1       1000  0.00%  0.00%  0.00%   0 encrypt proc     
+ 222           1           3        333  0.00%  0.00%  0.00%   0 CRYPTO MAP FREE  
+ 223           0           1          0  0.00%  0.00%  0.00%   0 Crypto INT       
+ 224           1           2        500  0.00%  0.00%  0.00%   0 Crypto IKE Dispa 
+ 225           6           3       2000  0.00%  0.00%  0.00%   0 Crypto IKMP      
+ 226           0           1          0  0.00%  0.00%  0.00%   0 IPSEC manual key 
+ 227          34         304        111  0.00%  0.00%  0.00%   0 IPSEC key engine 
+ 228           0           1          0  0.00%  0.00%  0.00%   0 Crypto ACL       
+ 229           1           1       1000  0.00%  0.00%  0.00%   0 Crypto PAS Proc  
+ 230           1           1       1000  0.00%  0.00%  0.00%   0 IPSec background 
+ 231           1           1       1000  0.00%  0.00%  0.00%   0 RSA background p 
+ 232           8           4       2000  0.00%  0.00%  0.00%   0 Crypto CA        
+ 233           1           3        333  0.00%  0.00%  0.00%   0 Crypto PKI-CRL   
+ 234           1           1       1000  0.00%  0.00%  0.00%   0 Crypto PKI-Rev-P 
+ 235           1           1       1000  0.00%  0.00%  0.00%   0 PKI OCSP         
+ 236           0           1          0  0.00%  0.00%  0.00%   0 PKI Revocation   
+ 237           2           2       1000  0.00%  0.00%  0.00%   0 DHCP Security He 
+ 238           5         101         49  0.00%  0.00%  0.00%   0 vlmap logger     
+ 239          13           2       6500  0.00%  0.00%  0.00%   0 pm scp dummy pro 
+ 240         546        6379         85  0.00%  0.00%  0.00%   0 PM Callback      
+ 242          35         485         72  0.00%  0.00%  0.00%   0 dhcp snooping sw 
+ 243           1          10        100  0.00%  0.00%  0.00%   0 AAA SEND STOP EV 
+ 244           0           1          0  0.00%  0.00%  0.00%   0 Test AAA Client  
+ 245           1           1       1000  0.00%  0.00%  0.00%   0 Syslog Traps     
+ 247          15          66        227  0.00%  0.00%  0.00%   0 EEM ED Syslog    
+ 248           4           4       1000  0.00%  0.00%  0.00%   0 EEM ED Routing   
+ 249           3           4        750  0.00%  0.00%  0.00%   0 EEM ED Generic   
+ 250           1           1       1000  0.00%  0.00%  0.00%   0 QoS TAM Request  
+ 251          33          61        540  0.00%  0.00%  0.00%   0 Syslog           
+ 253          38          48        791  0.00%  0.00%  0.00%   0 EEM Server       
+ 254           3           3       1000  0.00%  0.00%  0.00%   0 EEM Policy Direc 
+ 255           1           1       1000  0.00%  0.00%  0.00%   0 Connection Mgr   
+ 256           3           4        750  0.00%  0.00%  0.00%   0 EEM ED CLI       
+ 257           2           4        500  0.00%  0.00%  0.00%   0 EEM ED Counter   
+ 258           4           4       1000  0.00%  0.00%  0.00%   0 EEM ED Interface 
+ 259           2           4        500  0.00%  0.00%  0.00%   0 EEM ED IOSWD     
+ 260           4           4       1000  0.00%  0.00%  0.00%   0 EEM ED None      
+ 261           1           4        250  0.00%  0.00%  0.00%   0 EEM ED OIR       
+ 262           1           1       1000  0.00%  0.00%  0.00%   0 IPv6 Access Cont 
+ 263           4           4       1000  0.00%  0.00%  0.00%   0 EEM ED SNMP      
+ 264          21         107        196  0.00%  0.00%  0.00%   0 EEM ED Timer     
+ 265           4           4       1000  0.00%  0.00%  0.00%   0 EEM ED SNMP Obje 
+ 266           3           4        750  0.00%  0.00%  0.00%   0 EEM ED SNMP Noti 
+ 267           2           4        500  0.00%  0.00%  0.00%   0 EEM ED Ipsla     
+ 268           3           4        750  0.00%  0.00%  0.00%   0 EEM ED Nf        
+ 269           2           4        500  0.00%  0.00%  0.00%   0 EEM ED Test      
+ 270           1           4        250  0.00%  0.00%  0.00%   0 EEM ED Config    
+ 271           3           4        750  0.00%  0.00%  0.00%   0 EEM ED Env       
+ 272           1           4        250  0.00%  0.00%  0.00%   0 EEM ED DS        
+ 273           4           4       1000  0.00%  0.00%  0.00%   0 EEM ED CRASH     
+ 275           3           4        750  0.00%  0.00%  0.00%   0 EEM ED RPC       
+ 276          15           3       5000  0.00%  0.00%  0.00%   0 VLAN Manager     
+ 277          59         526        112  0.00%  0.00%  0.00%   0 Net Input        
+ 278         250        1211        206  0.00%  0.00%  0.00%   0 Compute load avg 
+ 279         232         301        770  0.00%  0.00%  0.00%   0 Per-minute Jobs  
+ 140           2           3        666  0.00%  0.00%  0.00%   0 Auth Manager     
+ 281          31         370         83  0.00%  0.00%  0.00%   0 mdns Timer Proce 
+ 282           2           2       1000  0.00%  0.00%  0.00%   0 MRIB Process     
+ 283           7          17        411  0.00%  0.00%  0.00%   0 EEM Helper Threa
+SW3#show processes cpu history
+                                                                  
+                                                                  
+                                                                  
+                                                  11111     11111 
+      555555555555554444455555555556666677777555550000099999222226
+  100                                                           
+   90                                                           
+   80                                                           
+   70                                                           
+   60                                                           
+   50                                                           
+   40                                                           
+   30                                                           
+   20                                                           
+   10 **************     ***************************************
+     0....5....1....1....2....2....3....3....4....4....5....5....6
+               0    5    0    5    0    5    0    5    0    5    0
+               CPU% per second (last 60 seconds)
+
+                                                                  
+                                                                  
+                                                                  
+      1   7                                                       
+      277705676666676666755655666667855555555565565555556565674755
+  100                                                           
+   90                                                           
+   80                                                           
+   70     *                                                     
+   60     *                                                     
+   50     *                                                     
+   40     *                                                     
+   30     *                                                     
+   20     *                                                     
+   10 #####**#***#*#**#*#*****#*#####************************* #
+     0....5....1....1....2....2....3....3....4....4....5....5....6
+               0    5    0    5    0    5    0    5    0    5    0
+               CPU% per minute (last 60 minutes)
+              * = maximum CPU%   # = average CPU%
+
+                                                                              
+                                                                              
+                                                                              
+      9                                                                       
+      4                                                                       
+  100                                                                       
+   90 *                                                                     
+   80 *                                                                     
+   70 *                                                                     
+   60 *                                                                     
+   50 *                                                                     
+   40 *                                                                     
+   30 *                                                                     
+   20 *                                                                     
+   10 *                                                                     
+     0....5....1....1....2....2....3....3....4....4....5....5....6....6....7..
+               0    5    0    5    0    5    0    5    0    5    0    5    0  
+                   CPU% per hour (last 72 hours)
+                  * = maximum CPU%   # = average CPU%
+
+
+SW3#show processes memory sorted
+Processor Pool Total:  843420640 Used:   60604808 Free:  782815832
+      I/O Pool Total:  114294784 Used:   96050448 Free:   18244336
+
+ PID TTY  Allocated      Freed    Holding    Getbufs    Retbufs Process
+   0   0  221904960   70866128  146298416          0          0 *Init*          
+ 253   0    1931008      29784    1914320          0          0 EEM Server      
+   0   0  128880824  127981408     904336    2619623          0 *Dead*          
+   0   0          0          0     460296          0          0 *MallocLite*    
+ 247   0     292672      16600     293168     100548          0 EEM ED Syslog   
+ 249   0     219016      16600     219512      67468          0 EEM ED Generic  
+ 218   0     151704         72     176728          0          0 Crypto IKEv2    
+  64   0     174856      17432     174424          0          0 EEM ED Identity 
+ 112   0     651232      81504     164040          0          0 CDP Protocol    
+  85   0     370240     206560     151680          0          0 mDNS            
+ 282   0     121872        232     146736          0          0 MRIB Process    
+  84   4    3305408    3213672     115816          0          0 SSH Process     
+ 232   0     434272     362656      96784          0          0 Crypto CA       
+  47   3     950824     880048      94904          0          0 SSH Process     
+   3   2    3155600    3085360      94352          0          0 SSH Process     
+ 157   0      75968        288      92776          0          0 IP Connected Rou
+   5   0    6696000    6696000      80056    6569100    6569100 Pool Manager    
+  83   0      58632        496      71168          0          0 VRRS Main thread
+ 225   0      43560        232      68424          0          0 Crypto IKMP     
+  14   0      73096      19808      66384          0          0 ARP Input       
+ 201   0      51176          0      64272          0          0 MMA DB TIMER    
+ 207   0      49600        232      62464          0          0 Timer Library   
+  77   0      49368          0      62464          0          0 ACCT Periodic Pr
+  66   0      59992     470608      60088          0          0 EEM ED ND       
+ 254   0      49568       1136      52432          0          0 EEM Policy Direc
+ 121   0      33032          0      46128          0          0 IP ARP Retry Age
+  53   0     111392          0      44744          0          0 Net Background  
+ 239   0      41376        576      44072          0          0 pm scp dummy pro
+ 172   0      14128       4320      34904          0          0 CEF: IPv4 proces
+ 155   0       9616          0      34712          0          0 IP RIB Update   
+ 266   0      33464      16760      33960          0          0 EEM ED SNMP Noti
+ 276   0     245328     234120      33352          0          0 VLAN Manager    
+ 181   0          0          0      33096          0          0 COPS            
+  11   0          0          0      33096          0          0 Crash writer    
+ 228   0          0          0      33096          0          0 Crypto ACL      
+ 122   0    1478056       1832      30592          0          0 IP Input        
+ 164   0     374368    1386824      30376          0          0 TCP Protocols   
+  75   0      16816        232      29680          0          0 AAA Server      
+ 273   0      28272      16600      28768          0          0 EEM ED CRASH    
+ 272   0      28272      16600      28768          0          0 EEM ED DS       
+ 268   0      28120      16600      28616          0          0 EEM ED Nf       
+ 227   0     271464       4736      28304          0          0 IPSEC key engine
+ 120   0       2736          0      27832          0          0 IP ARP Adjacency
+ 235   0        896          0      25992          0          0 PKI OCSP        
+ 203   0        792        232      25656          0          0 TPLUS           
+ 211   0        792        232      25656          0          0 LDAP process    
+ 137   0        216          0      25360          0          0 fib_fib_bfd_sb e
+ 216   0        464        232      25328          0          0 MMON PROCESS    
+ 217   0        464        232      25328          0          0 MMON MENG       
+ 109   0        216          0      25312          0          0 CEF switching ba
+ 177   0        216          0      25312          0          0 MFIB Master back
+ 175   0        216          0      25312          0          0 ADJ resolve proc
+ 174   0        216          0      25312          0          0 Collection proce
+ 173   0        216          0      25312          0          0 ADJ background  
+ 136   0        216        736      25312          0          0 CEF background p
+   1   0      12192          0      25288          0          0 Chunk Manager   
+ 281   0    3211552    3211480      25168          0          0 mdns Timer Proce
+  80   0        232        232      25136          0          0 Ethernet LMI    
+  55   0        232        232      25128          0          0 Logger          
+  54   0       1152       1152      25096          0          0 IDB Work        
+ 234   0          0          0      25096          0          0 Crypto PKI-Rev-P
+ 212   0          0          0      25096          0          0 Opaque Database 
+ 236   0          0          0      25096          0          0 PKI Revocation  
+ 244   0          0          0      25096          0          0 Test AAA Client 
+ 221   0          0          0      25096          0          0 encrypt proc    
+ 223   0          0          0      25096          0          0 Crypto INT      
+ 250   0          0          0      25096          0          0 QoS TAM Request 
+ 233   0        232        232      25096          0          0 Crypto PKI-CRL  
+ 224   0        232        232      25096          0          0 Crypto IKE Dispa
+ 251   0      21112      21112      25096          0          0 Syslog          
+ 197   0          0          0      25096          0          0 EPM ACL PLUG-IN 
+  68   0        232        232      25096          0          0 Ethernet CFM    
+  69   0        232        232      25096          0          0 Ethernet Timer C
+  70   0        232        232      25096          0          0 Ethernet Msec Ti
+  71   0        232        232      25096          0          0 Ethernet CFM IOU
+ 191   0        232        232      25096          0          0 X.25 Background 
+ 231   0          0          0      25096          0          0 RSA background p
+ 205   0       2376       2376      25096          0          0 LOCAL AAA       
+ 230   0          0          0      25096          0          0 IPSec background
+ 154   0          0          0      25096          0          0 Routing Topology
+  18   0          0          0      25096          0          0 Policy Manager  
+ 117   0        232        232      25096          0          0 ATM OAM Input   
+ 140   0        232        232      25096          0          0 Auth Manager    
+ 118   0        232        232      25096          0          0 ATM OAM TIMER   
+  91   0        232        232      25096          0          0 SSM connection m
+ 161   0        232        232      25096          0          0 Tunnel          
+ 134   0        232        232      25096          0          0 KRB5 AAA        
+ 163   0          0          0      25096          0          0 TCP Timer       
+  86   0          0          0      25096          0          0 SSS Manager     
+  20   0        232        232      25096          0          0 Dialer event    
+   0   0      24592     632928      24592          0          0 *Sched*         
+ 258   0      23440      16600      23936          0          0 EEM ED Interface
+ 257   0      23320      16760      23816          0          0 EEM ED Counter  
+ 264   0      23128      16600      23624          0          0 EEM ED Timer    
+  65   0      23144      16640      23600          0          0 EEM ED MAT      
+ 248   0      23232      16696      23568          0          0 EEM ED Routing  
+ 275   0      23040      16600      23536          0          0 EEM ED RPC      
+ 263   0      23040      16600      23536          0          0 EEM ED SNMP     
+ 265   0      23016      16600      23512          0          0 EEM ED SNMP Obje
+ 267   0      22976      16600      23472          0          0 EEM ED Ipsla    
+ 261   0      22976      16600      23472          0          0 EEM ED OIR      
+ 260   0      22976      16600      23472          0          0 EEM ED None     
+ 269   0      22976      16600      23472          0          0 EEM ED Test     
+ 270   0      22976      16600      23472          0          0 EEM ED Config   
+ 271   0      22976      16600      23472          0          0 EEM ED Env      
+ 256   0      22976      16600      23472          0          0 EEM ED CLI      
+ 259   0      22976      16600      23472          0          0 EEM ED IOSWD    
+ 176   0      14416       4992      22520          0          0 SR CapMan Proces
+ 102   0       5280        232      22144          0          0 IP Host Track Pr
+ 178   0       8560          0      21528          0          0 SSH Event handle
+ 115   0       6800          0      19896          0          0 TRACK Main threa
+ 283   0       6928        432      19592          0          0 EEM Helper Threa
+ 215   0       5240          0      18336          0          0 MMA DP TIMER    
+  92   0       5280        232      18144          0          0 OCE punted Pkts 
+ 166   0        896          0      17992          0          0 HTTP CORE       
+ 183   0        968        232      17832          0          0 MVPN Mgr Process
+ 156   0       3144       2592      17648          0          0 IP Background   
+ 168   0        464        232      17328          0          0 AUTO LAG Protoco
+ 184   0        464        232      17328          0          0 Multicast Offloa
+ 139   0        216          0      17312          0          0 Tunnel FIB      
+ 188   0          0          0      17096          0          0 IPv6 RIB Cleanup
+ 119   0          0          0      17096          0          0 HQF TARGET DYNAM
+ 187   0        232        232      17096          0          0 App Route Proces
+ 189   0          0          0      17096          0          0 IPv6 RIB Event H
+ 193   0      43288      43288      17096          0          0 QoS stats proces
+ 198   0          0          0      17096          0          0 IPv6 Static Hand
+ 124   0        232        232      17096          0          0 IP ARP Track    
+ 280   0          0          0      17096          0          0 Per-Second Jobs 
+  89   0        232        232      17096          0          0 Ethernet OAM Pro
+ 226   0          0          0      17096          0          0 IPSEC manual key
+ 138   0          0          0      17096          0          0 IP IRDP         
+  94   0          0          0      17096          0          0 MPLS Auto-Tunnel
+ 141   0          0          0      17096          0          0 EPM MAIN PROCESS
+ 186   0        232        232      17096          0          0 static          
+ 169   0       8536      20232      17024          0          0 IGMPSN L2MCM    
+ 255   0          0          0      16968          0          0 Connection Mgr  
+ 167   0      20640        232      16536          0          0 L2TRACE SERVER  
+   4   0       3320        232      16232          0          0 Check heaps     
+  30   0       2096          0      15192          0          0 IPC Seat Manager
+  81   0       1872          0      14968          0          0 FHRP Main thread
+ 116   0       1736          0      14832          0          0 TRACK Client thr
+  82   0       1688          0      14784          0          0 VRRP Main thread
+ 202   0       1592          0      14688          0          0 MMA MSG MCOL    
+ 279   0       1224          0      14320          0          0 Per-minute Jobs 
+ 210   0     124616      57640      14312          0          0 NIST rng proc   
+ 131   0        896          0      13992          0          0 Auth-proxy HTTP 
+  99   0       1008        232      13872          0          0 DTP Protocol    
+ 162   0       1096        376      13816          0          0 LFDp Input Proc 
+ 220   0     215160     214456      13800          0          0 crypto engine pr
+  57   0      66400          0      13744          0          0 IF-MGR control p
+  41   0     411840     429760      13632          0          0 crypto sw pk pro
+  12   0        344          0      13440          0          0 Exception contro
+ 104   0        536        232      13400          0          0 UDLD            
+ 101   0        248          0      13344          0          0 Port-Security   
+ 151   0        248          0      13344          0          0 Service Routing 
+ 147   0        464        232      13328          0          0 Dot1x Supplicant
+ 145   0        464        232      13328          0          0 Dot1x Supplicant
+ 146   0        464        232      13328          0          0 Dot1x Supplicant
+ 128   0      11856        232      13328          0          0 Spanning Tree   
+  63   0        216          0      13312          0          0 Src Fltr backgro
+  78   0          0          0      13120          0          0 AAA System Acct 
+  72   0        232        232      13112          0          0 Dot1x Mgr Proces
+ 159   0          0          0      13096          0          0 XC RIB MGR      
+ 160   0        232        328      13096          0          0 Inter Chassis Pr
+ 158   0        232        400      13096          0          0 Flow Exporter Ti
+ 129   0        232        232      13096          0          0 SpanTree Msg    
+  90   0          0          0      13096          0          0 AC Switch       
+ 130   0          0          0      13096          0          0 Webauth client  
+ 144   0          0          0      13096          0          0 CMD HANDLER     
+  88   0          0          0      13096          0          0 SSS Feature Time
+ 152   0          0          0      13096          0          0 HQF Output Shape
+ 170   0          0          0      13096          0          0 IGMPSN MRD      
+ 171   0          0          0      13096          0          0 IGMPSN          
+ 165   0          0          0      13096          0          0 Socket Timers   
+  93   0          0          0      13096          0          0 LSP Tunnel FRR  
+ 142   0          0          0      13096          0          0 Critical Auth   
+  79   0        232        232      13096          0          0 EFP Errd        
+ 153   0          0          0      13096          0          0 HQF Input Shaper
+  76   0          0          0      13096          0          0 AAA ACCT Proc   
+  74   0          0          0      13096          0          0 EAP Test        
+ 180   0        232        232      13096          0          0 ATIP_UDP_TSK    
+  87   0          0          0      13096          0          0 SSS Feature Mana
+ 182   0          0          0      13096          0          0 Probe Input     
+ 150   0          0          0      13096          0          0 PPP IP Add Route
+ 100   0        232        232      13096          0          0 PI MATM Aging Pr
+ 149   0          0          0      13096          0          0 MAB Framework   
+ 148   0          0          0      13096          0          0 DCT Bkgd Process
+ 127   0          0          0      13096          0          0 RIB LM VALIDATE 
+ 125   0        232        232      13096          0          0 PIM register asy
+ 105   0          0          0      13096          0          0 UNIX IP Source g
+ 190   0          0          0      13096          0          0 PAD InCall      
+ 143   0          0          0      13096          0          0 SVM UT Process  
+ 192   0          0          0      13096          0          0 X.25 Encaps Mana
+  95   0          0          0      13096          0          0 O-UNI Client Msg
+ 194   0          0          0      13096          0          0 SNMP Timers     
+ 133   0          0          0      13096          0          0 IPv6 ping proces
+ 196   0          0          0      13096          0          0 Timer Handler Pr
+  67   0          0          0      13096          0          0 Rate limit load 
+ 106   0        232        232      13096          0          0 process unix_l2_
+ 199   0        232        232      13096          0          0 AAA Cached Serve
+ 200   0        232        232      13096          0          0 LINE AAA        
+ 132   0          0          0      13096          0          0 IP Admin SM Proc
+  96   0          0          0      13096          0          0 DHCP Snooping   
+  62   0          0          0      13096          0          0 IOSv e1000      
+ 204   0        232        232      13096          0          0 ENABLE AAA      
+  61   0          0          0      13096          0          0 HC Counter Timer
+ 206   0          0          0      13096          0          0 MPLS Auto Mesh P
+  60   0          0          0      13096          0          0 Transport Port A
+ 208   0        232        232      13096          0          0 Crypto Support  
+ 209   0          0          0      13096          0          0 IPSECv6 PS Proc 
+  97   0          0          0      13096          0          0 DHCP Snooping db
+  59   0          0          0      13096          0          0 AggMgr Process  
+  58   0          0          0      13096          0          0 IF-MGR event pro
+ 213   0          0          0      13096          0          0 Key chain liveke
+ 114   0        232        232      13096          0          0 AAA Dictionary R
+ 123   0          0          0      13096          0          0 ICMP event handl
+  56   0      25536        232      13096          0          0 TTY Background  
+  52   0          0          0      13096          0          0 Critical Bkgnd  
+ 219   0          0          0      13096          0          0 IKEv2 AAA handle
+ 185   0          0          0      13096          0          0 RARP Input      
+ 107   0        232        232      13096          0          0 process unix_l2_
+ 222   0        232        552      13096          0          0 CRYPTO MAP FREE 
+  98   0          0        576      13096          0          0 802.1x switch   
+ 103   0        232        232      13096          0          0 Ethchnl         
+ 135   0          0          0      13096          0          0 FRR Background P
+ 111   0       9344      15360      13096          0          0 SpanTree Helper 
+  73   0          0          0      13096          0          0 EAP Framework   
+ 108   0          0        288      13096          0          0 VMATM Callback  
+ 229   0          0          0      13096          0          0 Crypto PAS Proc 
+ 195   0          0          0      13096          0          0 EPM Downlad Mana
+  43   0          0          0      13096          0          0 SERIAL A'detect 
+  42   0        232        232      13096          0          0 GraphIt         
+  26   0          0          0      13096          0          0 IPC Zone Manager
+  40   0          0          0      13096          0          0 Dynamic ARP Insp
+  39   0          0          0      13096          0          0 ARP Snoop       
+  38   0        232        232      13096          0          0 Serial Backgroun
+ 237   0        232        232      13096          0          0 DHCP Security He
+ 238   0          0          0      13096          0          0 vlmap logger    
+  37   0        232        232      13096          0          0 PrstVbl         
+ 240   0       9600      25656      13096          0          0 PM Callback     
+ 242   0        232        232      13096          0          0 dhcp snooping sw
+ 243   0        232       4360      13096          0          0 AAA SEND STOP EV
+  36   0          0          0      13096          0          0 IPC Session Deta
+ 245   0          0          0      13096          0          0 Syslog Traps    
+  35   0          0          0      13096          0          0 IPC Loadometer  
+  34   0          0          0      13096          0          0 IPC Keep Alive M
+  33   0          0          0      13096          0          0 IPC Seat TX Cont
+  32   0          0          0      13096          0          0 IPC Seat RX Cont
+  31   0          0          0      13096          0          0 IPC Check Queue 
+  24   0          0          0      13096          0          0 IPC Dynamic Cach
+  29   0          0          0      13096          0          0 IPC Process leve
+  15   0       2704       2704      13096          0          0 ARP Background  
+  28   0          0          0      13096          0          0 IPC Deferred Por
+  27   0          0          0      13096          0          0 IPC Periodic Tim
+  13   0          0          0      13096          0          0 IFS Agent Manage
+  25   0          0          0      13096          0          0 IPC Session Serv
+  10   0          0          0      13096          0          0 IOSv in console 
+  23   0          0          0      13096          0          0 IPC Mcast Pendin
+   9   0          0          0      13096          0          0 IOSv out console
+  22   0          0          0      13096          0          0 IPC Event Notifi
+  21   0          0          0      13096          0          0 Entity MIB API  
+  19   0        232        232      13096          0          0 DDR Timers      
+  17   0          0          0      13096          0          0 AAA_SERVER_DEADT
+  16   0          0          0      13096          0          0 CEF MIB API     
+ 278   0        232        232      13096          0          0 Compute load avg
+   6   0          0          0      13096          0          0 DiscardQ Backgro
+   7   0        232        232      13096          0          0 Timers          
+ 277   0          0          0      13096          0          0 Net Input       
+ 262   0          0          0      12968          0          0 IPv6 Access Cont
+  50   0        232          0       7328          0          0 Async write proc
+  48   0        232          0       7328          0          0 Async write proc
+  49   0        232          0       7328          0          0 Async write proc
+ 110   0        216          0       7312          0          0 ADJ NSF process 
+  45   0          0          0       7096          0          0 dev_device_inser
+  44   0          0          0       7096          0          0 Inode Table Dest
+  46   0          0          0       7096          0          0 dev_device_remov
+  51   0          0          0       7096          0          0 DFS flush period
+   2   0        232        232       7096          0          0 Load Meter      
+   8   0          0          0       7096          0          0 WATCH_AFS       
+                                156534576 Total
+SW3#show access-lists
+Extended IP access list preauth_ipv4_acl (per-user)
+    10 permit udp any any eq domain
+    20 permit tcp any any eq domain
+    30 permit udp any eq bootps any
+    40 permit udp any any eq bootpc
+    50 permit udp any eq bootpc any
+    60 deny ip any any
+IPv6 access list preauth_ipv6_acl (per-user)
+    permit udp any any eq domain sequence 10
+    permit tcp any any eq domain sequence 20
+    permit icmp any any nd-ns sequence 30
+    permit icmp any any nd-na sequence 40
+    permit icmp any any router-solicitation sequence 50
+    permit icmp any any router-advertisement sequence 60
+    permit icmp any any redirect sequence 70
+    permit udp any eq 547 any eq 546 sequence 80
+    permit udp any eq 546 any eq 547 sequence 90
+    deny ipv6 any any sequence 100
+SW3#show ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+       a - application route
+       + - replicated route, % - next hop override
+
+Gateway of last resort is not set
+
+      192.168.97.0/24 is variably subnetted, 2 subnets, 2 masks
+C        192.168.97.0/24 is directly connected, Vlan1
+L        192.168.97.233/32 is directly connected, Vlan1
+SW3#show file systems
+File Systems:
+
+     Size(b)     Free(b)      Type  Flags  Prefixes
+*   2142715904    2029989888      disk     rw   flash0: flash:
+           -           -      disk     rw   flash1:
+           -           -      disk     rw   flash2:
+           -           -      disk     rw   flash3:
+           -           -    opaque     rw   system:
+           -           -    opaque     rw   tmpsys:
+        262144        254535     nvram     rw   nvram:
+           -           -    opaque     rw   null:
+           -           -    opaque     ro   tar:
+           -           -   network     rw   tftp:
+           -           -    opaque     wo   syslog:
+           -           -   network     rw   rcp:
+           -           -   network     rw   http:
+           -           -   network     rw   ftp:
+           -           -   network     rw   scp:
+           -           -   network     rw   https:
+           -           -    opaque     ro   cns:
+
+SW3#show logging
+Syslog logging: enabled (0 messages dropped, 2 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+No Active Message Discriminator.
+
+
+
+No Inactive Message Discriminator.
+
+
+    Console logging: level debugging, 86 messages logged, xml disabled,
+                     filtering disabled
+    Monitor logging: level debugging, 0 messages logged, xml disabled,
+                     filtering disabled
+    Buffer logging:  level debugging, 88 messages logged, xml disabled,
+                    filtering disabled
+    Exception Logging: size (8192 bytes)
+    Count and timestamp logging messages: disabled
+    Persistent logging: disabled
+    Trap logging: level informational, 91 message lines logged
+        Logging Source-Interface:       VRF Name:
+
+Log Buffer (8192 bytes):
+Sep 12 14:32:04.223: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:33:55.824: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:35:46.359: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:37:37.648: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:39:29.429: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:41:19.881: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:43:11.171: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:45:01.699: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:46:52.788: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:48:44.206: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:50:35.801: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:52:27.651: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:54:18.561: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:56:10.176: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:58:00.622: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 14:59:51.731: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:01:42.852: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:03:34.108: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:05:26.540: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:07:16.841: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:09:08.270: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:11:00.737: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:12:52.085: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:14:43.116: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:16:33.643: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:18:27.265: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:20:17.775: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:22:08.280: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:23:58.703: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:25:50.890: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:27:41.613: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:29:32.914: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:31:24.075: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:33:13.303: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:35:04.256: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:36:55.486: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:38:46.860: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:40:38.037: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:42:29.397: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:44:21.920: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:46:13.150: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:48:04.341: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:49:55.722: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:51:47.235: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:53:38.520: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:55:31.282: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:57:22.254: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 15:58:15.313: %SYS-5-CONFIG_I: Configured from console by admin on vty2 (192.168.97.108)
+*Sep 12 15:59:12.792: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 16:01:03.551: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 16:02:54.584: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet0/0 (not half duplex), with R2.router FastEthernet0/0 (half duplex).
+*Sep 12 16:03:38.245: %SYS-5-CONFIG_I: Configured from console by admin on vty2 (192.168.97.108)
+SW3#show tech-support
+
+------------------ show clock ------------------
+
+
+*16:03:40.275 UTC Mon Sep 12 2022
+
+------------------ show version ------------------
+
+Cisco IOS Software, vios_l2 Software (vios_l2-ADVENTERPRISEK9-M), Experimental Version 15.2(20170321:233949) [mmen 101]
+Copyright (c) 1986-2017 by Cisco Systems, Inc.
+Compiled Wed 22-Mar-17 08:38 by mmen
+
+
+ROM: Bootstrap program is IOSv
+
+SW3 uptime is 1 hour, 40 minutes
+!
+username admin password 0 <removed>
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain-name switch2
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ media-type rj45
+ negotiation auto
+!
+interface Vlan1
+ ip address 192.168.97.233 255.255.255.0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+!
+line con 0
+ login local
+line aux 0
+line vty 0 4
+ login local
+ transport input all
+!
+!
+end
+
+
+------------------ show stacks ------------------
+
+
+Minimum process stacks:
+ Free/Size   Name
+11484/12000  CDP BLOB
+15436/16000  EEM ED RF
+15468/16000  EM ED GOLD
+23220/24000  MRIB IPv4 Init Process
+23188/24000  MRIB IPv6 Init Process
+ 9572/12000  EEM Shell Director
+11332/12000  SPAN Subsystem
+58752/60000  EEM Auto Registration Proc
+10372/12000  DIB error message
+ 5300/6000   LIM WAVL
+11220/12000  SASL MAIN
+22436/24000  PnP Agent Discovery
+16228/24000  Init
+15484/16000  cdp init process
+11156/12000  RADIUS INITCONFIG
+ 7916/12000  IOSv Digital Signature Verify
+11396/12000  URPF stats
+ 5332/6000   Rom Random Update Process
+22268/24000  Exec
+17428/24000  SSH Process
+
+Interrupt level stacks:
+Level    Called Unused/Size  Name
+  1           0   9000/9000  Network devices
+  5           0   9000/9000  Console UART
+  7           0   9000/9000  Clocktick Interrupt
+
+------------------ show interfaces ------------------
+
+
+GigabitEthernet0/0 is up, line protocol is up (connected) 
+  Hardware is iGbE, address is 5000.0004.0000 (bia 5000.0004.0000)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, link type is auto, media type is unknown media type
+  output flow-control is unsupported, input flow-control is unsupported
+  Full-duplex, Auto-speed, link type is auto, media type is RJ45
+  input flow-control is off, output flow-control is unsupported 
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:00, output 00:00:00, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/0 (size/max)
+  5 minute input rate 2000 bits/sec, 1 packets/sec
+  5 minute output rate 2000 bits/sec, 2 packets/sec
+     8627 packets input, 946236 bytes, 0 no buffer
+     Received 0 broadcasts (0 multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     3960 packets output, 658408 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet0/1 is up, line protocol is up (connected) 
+  Hardware is iGbE, address is 5000.0004.0001 (bia 5000.0004.0001)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, link type is auto, media type is unknown media type
+  output flow-control is unsupported, input flow-control is unsupported
+  Full-duplex, Auto-speed, link type is auto, media type is RJ45
+  input flow-control is off, output flow-control is unsupported 
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output 00:00:00, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/0 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts (0 multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     5669 packets output, 639476 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet0/2 is up, line protocol is up (connected) 
+  Hardware is iGbE, address is 5000.0004.0002 (bia 5000.0004.0002)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, link type is auto, media type is unknown media type
+  output flow-control is unsupported, input flow-control is unsupported
+  Full-duplex, Auto-speed, link type is auto, media type is RJ45
+  input flow-control is off, output flow-control is unsupported 
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output 00:00:00, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/0 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts (0 multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     5670 packets output, 639832 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet0/3 is up, line protocol is up (connected) 
+  Hardware is iGbE, address is 5000.0004.0003 (bia 5000.0004.0003)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, link type is auto, media type is unknown media type
+  output flow-control is unsupported, input flow-control is unsupported
+  Full-duplex, Auto-speed, link type is auto, media type is RJ45
+  input flow-control is off, output flow-control is unsupported 
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output 00:00:00, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/0 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts (0 multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     5669 packets output, 639476 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet1/0 is up, line protocol is up (connected) 
+  Hardware is iGbE, address is 5000.0004.0004 (bia 5000.0004.0004)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, link type is auto, media type is unknown media type
+  output flow-control is unsupported, input flow-control is unsupported
+  Full-duplex, Auto-speed, link type is auto, media type is RJ45
+  input flow-control is off, output flow-control is unsupported 
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output 00:00:00, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/0 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts (0 multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     5669 packets output, 639476 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet1/1 is up, line protocol is up (connected) 
+  Hardware is iGbE, address is 5000.0004.0005 (bia 5000.0004.0005)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, link type is auto, media type is unknown media type
+  output flow-control is unsupported, input flow-control is unsupported
+  Full-duplex, Auto-speed, link type is auto, media type is RJ45
+  input flow-control is off, output flow-control is unsupported 
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output 00:00:00, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/0 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts (0 multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     5670 packets output, 639832 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet1/2 is up, line protocol is up (connected) 
+  Hardware is iGbE, address is 5000.0004.0006 (bia 5000.0004.0006)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, link type is auto, media type is unknown media type
+  output flow-control is unsupported, input flow-control is unsupported
+  Full-duplex, Auto-speed, link type is auto, media type is RJ45
+  input flow-control is off, output flow-control is unsupported 
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output 00:00:00, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/0 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts (0 multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     5670 packets output, 639832 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet1/3 is up, line protocol is up (connected) 
+  Hardware is iGbE, address is 5000.0004.0007 (bia 5000.0004.0007)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, link type is auto, media type is unknown media type
+  output flow-control is unsupported, input flow-control is unsupported
+  Full-duplex, Auto-speed, link type is auto, media type is RJ45
+  input flow-control is off, output flow-control is unsupported 
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output 00:00:00, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/0 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts (0 multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     5670 packets output, 639832 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+Vlan1 is up, line protocol is up 
+  Hardware is Ethernet SVI, address is 5000.0004.8001 (bia 5000.0004.8001)
+  Internet address is 192.168.97.233/24
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive not supported 
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:00, output never, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 8/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 1000 bits/sec, 1 packets/sec
+  5 minute output rate 2000 bits/sec, 2 packets/sec
+     4497 packets input, 621557 bytes, 0 no buffer
+     Received 0 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     3456 packets output, 594853 bytes, 0 underruns
+     0 output errors, 0 interface resets
+     0 unknown protocol drops
+     0 output buffer failures, 0 output buffers swapped out
+
+------------------ show interfaces history ------------------
+
+
+
+------------------ show controllers ------------------
+
+
+Interface GigabitEthernet0/0 (idb 0xF5C6258)
+Hardware is iGbE 
+ Register base address: 0xFE9E0000
+ PCI REV: A3
+  network link is up  
+  loopback type is none
+
+= Media  RJ45 =
+
+Media Change Count: 0
+
+MAC registers:
+  CTRL  =0x00000040, STATUS=0x80080783, CTRL_X=0x00000000, IMS   =0x00000091
+  EECD  =0x00000188, EERD  =0x00000210  ETT   =0x00000000, TXDMAC=0x00000000
+  RCTL  =0x0040803A, RDBAL =0x075C1000, RDBAH =0x00000000, RDLEN =0x00008000
+  RDH   =0x000001C5, RDT   =0x000001C4, RDTR  =0x00000020, RLPML =0x00000000
+  RFCTL =0x00000000
+  TCTL  =0x000400FA, TDBAL =0x075CA000, TDBAH =0x00000000, TDLEN =0x00008000
+  TDH   =0x00000798, TDT   =0x00000798, TIPG  =0x00000000
+  TDWAH   =0x00000000, TDWAL   =0x00000000
+  FCRTH =0x00000000, FCRTL =0x00000000
+  FCAH  =0x00000000, FCAL  =0x00000000, FCT   =0x00000000, FCTTV =0x00000000
+  RDFH  =0x00000000, RDFT  =0x00000000, RDFPC =0x00000000
+  TDFH  =0x00000000, TDFT  =0x00000000, TDFPC =0x00000000
+  RDFHS =0x00000000, RDFTS =0x00000000, RXDCTL=0x00000000
+  TDFHS =0x00000000, TDFTS =0x00000000, TXDCTL=0x01020204
+  RXCSUM=0x00000000, TIDV=0x00000000
+  PCS_CFG   =0x00000000, PCS_LCTL=0x00000000, PCS_LSTS =0x00000000
+  PCS_ANADV =0x00000000, PCS_LPAB=0x00000000, PCS_NPTX =0x00000000
+  PCS_LPABNP=0x00000000, I2CCMD  =0x00000000, I2CPARAMS=0x00000000
+
+Register decodes:
+  Status              : 0x80080783, FD, UP, 1000Mbps, Auto1000Mbps, PCI
+  Control register    : 0x00000040, HD, SetLinkUP, 10Mbs
+  Control register ext: 0x00000000, Copper
+
+  Rxdescriptor addr=07EEC700 len=00000040, stat=00000000
+  Txdescriptor addr=06D3316A cmd/len=0B00003C, stat=00000001
+  RX is  enabled, TX is  enabled
+  Device status = full-duplex, link up
+  PCI width = 32, PCI66=0, PCIX=0, PCIXSPD is 50-66MHz  Device Speed = 1000Mbps
+
+PCI configuration registers:
+  bus_no=0, device_no=2, subdevice 0
+  DeviceID=0x100E, VendorID=0x8086, Command=0x0106, Status=0x0000
+  Class=0x02/0x00/0x00, Revision=0x03, LatencyTimer=0x00, CacheLineSize=0x00
+  BaseAddr0=0xFE9E0000, BaseAddr1=0x0000C001, MaxLat=0x00,MinGnt=0x00
+  SubsysDeviceID=0x1100, SubsysVendorID=0x1AF4
+ Interrupt Line 0x0A, Pin 0x01
+  Cap_Ptr=0x00000000  Retry/TRDY Timeout=0x00000000
+  PMC=0x00000000  PMCSR=0x00000000
+  DEVCTRL=0x00000000
+
+Internal Driver Information:
+  lc_ip_turbo_fs=0x229CBD0, ip_routecache=0x11(dfs=0/mdfs=0)
+  i82576_ds=0xF5C3B58, registers=0xFE9E0000
+  rx cache size=2048, rx cache end=1, rx_nobuffer=0
+  max_mtu=1524
+  ring sizes: RX=2048, TX=2048
+  rxring=0x75C1000, shadow=0xF5C7EE0, head=453, rx_buf_size=2048
+  txring=0x75CA000, shadow=0xF5C9F10, sw_tdh=1944, tail=1944
+  chip_state=2, pci_rev=3
+  tx_count=0, tx_ring_max=2048, tx_limited=0 (cur ring size 2048)
+  rx_overrun=0, rx_seq=0, rx_no_enp=0, rx_discard=0
+  throttled=0, enabled=0, disabled=0, bypassed=0
+  reset=2(init=1, check=0, restart=1, pci=0), auto_restart=2
+  link_reset=0, tx_carrier_loss=0, fatal_tx_err=0
+  wait_for_last_tdt=0, rx_stuck=0
+  tx_stuck=0,  rx_max_spin=1,  rr_port_next=0
+
+Statistics:
+  CRC error        0             Symbol error     0           
+  Missed Packets   0             Excessive Coll   0           
+  Multiple Coll    0             Length Error     0           
+  Late Coll        0             Collision        0           
+  Defer            0             Receive Length   0           
+  XON RX           0           
+  XON TX           0             XOFF RX          0           
+  XOFF TX          0             FC RX Unsupport  0           
+  Packet RX (64)   0             Packet RX (127)  0           
+  Packet RX (255)  0             Packet RX (511)  0           
+  Packet RX (1023) 0             Packet RX (1522) 0           
+  Good Packet RX   8645          Broadcast RX     0           
+  Multicast RX     0             Good Packet TX   3992        
+  Good Octets RX.H 0             Good Octets RX.L 0           
+  Good Octets TX.H 0             Good Octets TX.L 0           
+  RX No Buff       0             RX Undersize     0           
+  RX Fragment      0             RX Oversize      0           
+  RX Octets High   0             RX Octets Low    1011103     
+  TX Octets High   0             TX Octets Low    674348      
+  TX Packet        3992          RX Packet        8645        
+  TX Broadcast     0             TX Multicast     0           
+  Packet TX (64)   0             Packet TX (127)  0           
+  Packet TX (255)  0             Packet TX (511)  0           
+  Packet TX (1023) 0             Packet TX (1522) 0           
+  TX No CSR        0           
+  RX Error Count   0             TCP Segmentation 0           
+  Host Trasmit Discarded packets by MAC Count  0           
+  Interrupt Assertion Count   0           
+  Receive Packets to Host Count 0           
+  Host Good Packets Transmitted Count 0           
+
+Registers:
+  Phy control                   : 0x00001140, FD, AutoEna, 1000Mbps
+  Phy status                    : 0x0000794D, UP
+  Phy ID1                       : 0x00000141
+  Phy ID2                       : 0x00000C20
+  Autoneg cap advertised        : 0x000005E1, CSMA/CD, 10M HD, 10M FD, 100M HD, 100M FD, Pause
+  Autoneg base page cap         : 0x000001E0
+  Autoneg expanded              : 0x00000000
+  Autoneg next page tx          : 0x00000000
+  Autoneg LP next page          : 0x00000000
+  1000T control                 : 0x00000E00, 1000 FD, Master
+  1000T status                  : 0x00003C00, LocRxOk, RemRxOk, Rem1000T-FD, Rem1000T-HD
+  Extended status               : 0x00000000
+  Port config                   : 0x00000360
+  Port status                   : 0x0000AC00, HD, UP, 100Mbps
+  Port control                  : 0x00000000
+  Link health                   : 0x00000000
+  1000T FIFO                    : 0x00000D60
+  Channel quality               : 0x00000000
+
+HW addr filter: 0xF5CDF40
+
+  Chip address filter[0] 80000000.04000050
+  Chip address filter[1] 80000700.00C28001
+  Chip address filter[2] 8000CCCC.CC0C0001
+  Chip address filter[3] 80000200.00C28001
+  Chip address filter[4] 7FFFFFFF.00000000
+  Chip address filter[5] 7FFFFFFF.00000000
+  Chip address filter[6] 7FFFFFFF.00000000
+  Chip address filter[7] 7FFFFFFF.00000000
+  Chip address filter[8] 7FFFFFFF.00000000
+  Chip address filter[9] 7FFFFFFF.00000000
+  Chip address filter[10] 7FFFFFFF.00000000
+  Chip address filter[11] 7FFFFFFF.00000000
+  Chip address filter[12] 7FFFFFFF.00000000
+  Chip address filter[13] 7FFFFFFF.00000000
+  Chip address filter[14] 7FFFFFFF.00000000
+  Chip address filter[15] 7FFFFFFF.00000000
+  Entry= 0:  Addr=5000.0004.0000
+  Entry= 1:  Addr=0180.C200.0007
+  Entry= 2:  Addr=0100.0CCC.CCCC
+  Entry= 3:  Addr=0180.C200.0002
+  (All other entries are empty)
+
+Software MAC address filter(hash:length/addr/mask/hits)
+-------------------------------------------------------
+  0x00:  0  5000.0004.0000  0000.0000.0000         0
+  0x00:  1  ffff.ffff.ffff  0000.0000.0000         0
+  0xC0:  0  0100.0ccc.cccc  0000.0000.0000         3
+  0xC0:  1  0180.c200.0002  0000.0000.0000         0
+  0xC5:  0  0180.c200.0007  0000.0000.0000         0
+
+  Software filtered frames: 0
+  unicast overflow mode on
+  multicast overflow mode on
+  Promiscuous mode on
+Interface GigabitEthernet0/1 (idb 0xF6276E8)
+Hardware is iGbE 
+ Register base address: 0xFEA20000
+ PCI REV: A3
+  network link is up  
+  loopback type is none
+
+= Media  RJ45 =
+
+Media Change Count: 0
+
+MAC registers:
+  CTRL  =0x00000040, STATUS=0x80080783, CTRL_X=0x00000000, IMS   =0x00000091
+  EECD  =0x00000188, EERD  =0x01000210  ETT   =0x00000000, TXDMAC=0x00000000
+  RCTL  =0x0040803A, RDBAL =0x0801D000, RDBAH =0x00000000, RDLEN =0x00008000
+  RDH   =0x00000000, RDT   =0x000007FF, RDTR  =0x00000020, RLPML =0x00000000
+  RFCTL =0x00000000
+  TCTL  =0x000400FA, TDBAL =0x08026000, TDBAH =0x00000000, TDLEN =0x00008000
+  TDH   =0x00000625, TDT   =0x00000625, TIPG  =0x00000000
+  TDWAH   =0x00000000, TDWAL   =0x00000000
+  FCRTH =0x00000000, FCRTL =0x00000000
+  FCAH  =0x00000000, FCAL  =0x00000000, FCT   =0x00000000, FCTTV =0x00000000
+  RDFH  =0x00000000, RDFT  =0x00000000, RDFPC =0x00000000
+  TDFH  =0x00000000, TDFT  =0x00000000, TDFPC =0x00000000
+  RDFHS =0x00000000, RDFTS =0x00000000, RXDCTL=0x00000000
+  TDFHS =0x00000000, TDFTS =0x00000000, TXDCTL=0x01020204
+  RXCSUM=0x00000000, TIDV=0x00000000
+  PCS_CFG   =0x00000000, PCS_LCTL=0x00000000, PCS_LSTS =0x00000000
+  PCS_ANADV =0x00000000, PCS_LPAB=0x00000000, PCS_NPTX =0x00000000
+  PCS_LPABNP=0x00000000, I2CCMD  =0x00000000, I2CPARAMS=0x00000000
+
+Register decodes:
+  Status              : 0x80080783, FD, UP, 1000Mbps, Auto1000Mbps, PCI
+  Control register    : 0x00000040, HD, SetLinkUP, 10Mbs
+  Control register ext: 0x00000000, Copper
+
+  Rxdescriptor addr=08397200 len=00000000, stat=00000000
+  Txdescriptor addr=06D266E7 cmd/len=0B00003C, stat=00000001
+  RX is  enabled, TX is  enabled
+  Device status = full-duplex, link up
+  PCI width = 32, PCI66=0, PCIX=0, PCIXSPD is 50-66MHz  Device Speed = 1000Mbps
+
+PCI configuration registers:
+  bus_no=0, device_no=3, subdevice 0
+  DeviceID=0x100E, VendorID=0x8086, Command=0x0106, Status=0x0000
+  Class=0x02/0x00/0x00, Revision=0x03, LatencyTimer=0x00, CacheLineSize=0x00
+  BaseAddr0=0xFEA20000, BaseAddr1=0x0000C041, MaxLat=0x00,MinGnt=0x00
+  SubsysDeviceID=0x1100, SubsysVendorID=0x1AF4
+ Interrupt Line 0x0B, Pin 0x01
+  Cap_Ptr=0x00000000  Retry/TRDY Timeout=0x00000000
+  PMC=0x00000000  PMCSR=0x00000000
+  DEVCTRL=0x00000000
+
+Internal Driver Information:
+  lc_ip_turbo_fs=0x229CBD0, ip_routecache=0x11(dfs=0/mdfs=0)
+  i82576_ds=0xF5C4038, registers=0xFEA20000
+  rx cache size=2048, rx cache end=0, rx_nobuffer=0
+  max_mtu=1524
+  ring sizes: RX=2048, TX=2048
+  rxring=0x801D000, shadow=0xF629358, head=0, rx_buf_size=2048
+  txring=0x8026000, shadow=0xF62B388, sw_tdh=1573, tail=1573
+  chip_state=2, pci_rev=3
+  tx_count=0, tx_ring_max=2048, tx_limited=0 (cur ring size 2048)
+  rx_overrun=0, rx_seq=0, rx_no_enp=0, rx_discard=0
+  throttled=0, enabled=0, disabled=0, bypassed=0
+  reset=2(init=1, check=0, restart=1, pci=0), auto_restart=2
+  link_reset=0, tx_carrier_loss=0, fatal_tx_err=0
+  wait_for_last_tdt=0, rx_stuck=0
+  tx_stuck=0,  rx_max_spin=1,  rr_port_next=0
+
+Statistics:
+  CRC error        0             Symbol error     0           
+  Missed Packets   0             Excessive Coll   0           
+  Multiple Coll    0             Length Error     0           
+  Late Coll        0             Collision        0           
+  Defer            0             Receive Length   0           
+  XON RX           0           
+  XON TX           0             XOFF RX          0           
+  XOFF TX          0             FC RX Unsupport  0           
+  Packet RX (64)   0             Packet RX (127)  0           
+  Packet RX (255)  0             Packet RX (511)  0           
+  Packet RX (1023) 0             Packet RX (1522) 0           
+  Good Packet RX   0             Broadcast RX     0           
+  Multicast RX     0             Good Packet TX   5669        
+  Good Octets RX.H 0             Good Octets RX.L 0           
+  Good Octets TX.H 0             Good Octets TX.L 0           
+  RX No Buff       0             RX Undersize     0           
+  RX Fragment      0             RX Oversize      0           
+  RX Octets High   0             RX Octets Low    0           
+  TX Octets High   0             TX Octets Low    639476      
+  TX Packet        5669          RX Packet        0           
+  TX Broadcast     0             TX Multicast     0           
+  Packet TX (64)   0             Packet TX (127)  0           
+  Packet TX (255)  0             Packet TX (511)  0           
+  Packet TX (1023) 0             Packet TX (1522) 0           
+  TX No CSR        0           
+  RX Error Count   0             TCP Segmentation 0           
+  Host Trasmit Discarded packets by MAC Count  0           
+  Interrupt Assertion Count   0           
+  Receive Packets to Host Count 0           
+  Host Good Packets Transmitted Count 0           
+
+Registers:
+  Phy control                   : 0x00001140, FD, AutoEna, 1000Mbps
+  Phy status                    : 0x0000794D, UP
+  Phy ID1                       : 0x00000141
+  Phy ID2                       : 0x00000C20
+  Autoneg cap advertised        : 0x000005E1, CSMA/CD, 10M HD, 10M FD, 100M HD, 100M FD, Pause
+  Autoneg base page cap         : 0x000001E0
+  Autoneg expanded              : 0x00000000
+  Autoneg next page tx          : 0x00000000
+  Autoneg LP next page          : 0x00000000
+  1000T control                 : 0x00000E00, 1000 FD, Master
+  1000T status                  : 0x00003C00, LocRxOk, RemRxOk, Rem1000T-FD, Rem1000T-HD
+  Extended status               : 0x00000000
+  Port config                   : 0x00000360
+  Port status                   : 0x0000AC00, HD, UP, 100Mbps
+  Port control                  : 0x00000000
+  Link health                   : 0x00000000
+  1000T FIFO                    : 0x00000D60
+  Channel quality               : 0x00000000
+
+HW addr filter: 0xF62F3B8
+
+  Chip address filter[0] 80000100.04000050
+  Chip address filter[1] 80000700.00C28001
+  Chip address filter[2] 8000CCCC.CC0C0001
+  Chip address filter[3] 80000200.00C28001
+  Chip address filter[4] 7FFFFFFF.00000000
+  Chip address filter[5] 7FFFFFFF.00000000
+  Chip address filter[6] 7FFFFFFF.00000000
+  Chip address filter[7] 7FFFFFFF.00000000
+  Chip address filter[8] 7FFFFFFF.00000000
+  Chip address filter[9] 7FFFFFFF.00000000
+  Chip address filter[10] 7FFFFFFF.00000000
+  Chip address filter[11] 7FFFFFFF.00000000
+  Chip address filter[12] 7FFFFFFF.00000000
+  Chip address filter[13] 7FFFFFFF.00000000
+  Chip address filter[14] 7FFFFFFF.00000000
+  Chip address filter[15] 7FFFFFFF.00000000
+  Entry= 0:  Addr=5000.0004.0001
+  Entry= 1:  Addr=0180.C200.0007
+  Entry= 2:  Addr=0100.0CCC.CCCC
+  Entry= 3:  Addr=0180.C200.0002
+  (All other entries are empty)
+
+Software MAC address filter(hash:length/addr/mask/hits)
+-------------------------------------------------------
+  0x00:  0  ffff.ffff.ffff  0000.0000.0000         0
+  0x01:  0  5000.0004.0001  0000.0000.0000         0
+  0xC0:  0  0100.0ccc.cccc  0000.0000.0000         3
+  0xC0:  1  0180.c200.0002  0000.0000.0000         0
+  0xC5:  0  0180.c200.0007  0000.0000.0000         0
+
+  Software filtered frames: 0
+  unicast overflow mode on
+  multicast overflow mode on
+  Promiscuous mode on
+Interface GigabitEthernet0/2 (idb 0xF6856F0)
+Hardware is iGbE 
+ Register base address: 0xFEA60000
+ PCI REV: A3
+  network link is up  
+  loopback type is none
+
+= Media  RJ45 =
+
+Media Change Count: 0
+
+MAC registers:
+  CTRL  =0x00000040, STATUS=0x80080783, CTRL_X=0x00000000, IMS   =0x00000091
+  EECD  =0x00000188, EERD  =0x02000210  ETT   =0x00000000, TXDMAC=0x00000000
+  RCTL  =0x0040803A, RDBAL =0x08A79000, RDBAH =0x00000000, RDLEN =0x00008000
+  RDH   =0x00000000, RDT   =0x000007FF, RDTR  =0x00000020, RLPML =0x00000000
+  RFCTL =0x00000000
+  TCTL  =0x000400FA, TDBAL =0x08A82000, TDBAH =0x00000000, TDLEN =0x00008000
+  TDH   =0x00000626, TDT   =0x00000626, TIPG  =0x00000000
+  TDWAH   =0x00000000, TDWAL   =0x00000000
+  FCRTH =0x00000000, FCRTL =0x00000000
+  FCAH  =0x00000000, FCAL  =0x00000000, FCT   =0x00000000, FCTTV =0x00000000
+  RDFH  =0x00000000, RDFT  =0x00000000, RDFPC =0x00000000
+  TDFH  =0x00000000, TDFT  =0x00000000, TDFPC =0x00000000
+  RDFHS =0x00000000, RDFTS =0x00000000, RXDCTL=0x00000000
+  TDFHS =0x00000000, TDFTS =0x00000000, TXDCTL=0x01020204
+  RXCSUM=0x00000000, TIDV=0x00000000
+  PCS_CFG   =0x00000000, PCS_LCTL=0x00000000, PCS_LSTS =0x00000000
+  PCS_ANADV =0x00000000, PCS_LPAB=0x00000000, PCS_NPTX =0x00000000
+  PCS_LPABNP=0x00000000, I2CCMD  =0x00000000, I2CPARAMS=0x00000000
+
+Register decodes:
+  Status              : 0x80080783, FD, UP, 1000Mbps, Auto1000Mbps, PCI
+  Control register    : 0x00000040, HD, SetLinkUP, 10Mbs
+  Control register ext: 0x00000000, Copper
+
+  Rxdescriptor addr=08DF3200 len=00000000, stat=00000000
+  Txdescriptor addr=06D600CA cmd/len=0B0000B0, stat=00000001
+  RX is  enabled, TX is  enabled
+  Device status = full-duplex, link up
+  PCI width = 32, PCI66=0, PCIX=0, PCIXSPD is 50-66MHz  Device Speed = 1000Mbps
+
+PCI configuration registers:
+  bus_no=0, device_no=4, subdevice 0
+  DeviceID=0x100E, VendorID=0x8086, Command=0x0106, Status=0x0000
+  Class=0x02/0x00/0x00, Revision=0x03, LatencyTimer=0x00, CacheLineSize=0x00
+  BaseAddr0=0xFEA60000, BaseAddr1=0x0000C081, MaxLat=0x00,MinGnt=0x00
+  SubsysDeviceID=0x1100, SubsysVendorID=0x1AF4
+ Interrupt Line 0x0B, Pin 0x01
+  Cap_Ptr=0x00000000  Retry/TRDY Timeout=0x00000000
+  PMC=0x00000000  PMCSR=0x00000000
+  DEVCTRL=0x00000000
+
+Internal Driver Information:
+  lc_ip_turbo_fs=0x229CBD0, ip_routecache=0x11(dfs=0/mdfs=0)
+  i82576_ds=0xF5C4518, registers=0xFEA60000
+  rx cache size=2048, rx cache end=0, rx_nobuffer=0
+  max_mtu=1524
+  ring sizes: RX=2048, TX=2048
+  rxring=0x8A79000, shadow=0xF687360, head=0, rx_buf_size=2048
+  txring=0x8A82000, shadow=0xF689390, sw_tdh=1574, tail=1574
+  chip_state=2, pci_rev=3
+  tx_count=0, tx_ring_max=2048, tx_limited=0 (cur ring size 2048)
+  rx_overrun=0, rx_seq=0, rx_no_enp=0, rx_discard=0
+  throttled=0, enabled=0, disabled=0, bypassed=0
+  reset=2(init=1, check=0, restart=1, pci=0), auto_restart=2
+  link_reset=0, tx_carrier_loss=0, fatal_tx_err=0
+  wait_for_last_tdt=0, rx_stuck=0
+  tx_stuck=0,  rx_max_spin=1,  rr_port_next=1
+
+Statistics:
+  CRC error        0             Symbol error     0           
+  Missed Packets   0             Excessive Coll   0           
+  Multiple Coll    0             Length Error     0           
+  Late Coll        0             Collision        0           
+  Defer            0             Receive Length   0           
+  XON RX           0           
+  XON TX           0             XOFF RX          0           
+  XOFF TX          0             FC RX Unsupport  0           
+  Packet RX (64)   0             Packet RX (127)  0           
+  Packet RX (255)  0             Packet RX (511)  0           
+  Packet RX (1023) 0             Packet RX (1522) 0           
+  Good Packet RX   0             Broadcast RX     0           
+  Multicast RX     0             Good Packet TX   5670        
+  Good Octets RX.H 0             Good Octets RX.L 0           
+  Good Octets TX.H 0             Good Octets TX.L 0           
+  RX No Buff       0             RX Undersize     0           
+  RX Fragment      0             RX Oversize      0           
+  RX Octets High   0             RX Octets Low    0           
+  TX Octets High   0             TX Octets Low    639832      
+  TX Packet        5670          RX Packet        0           
+  TX Broadcast     0             TX Multicast     0           
+  Packet TX (64)   0             Packet TX (127)  0           
+  Packet TX (255)  0             Packet TX (511)  0           
+  Packet TX (1023) 0             Packet TX (1522) 0           
+  TX No CSR        0           
+  RX Error Count   0             TCP Segmentation 0           
+  Host Trasmit Discarded packets by MAC Count  0           
+  Interrupt Assertion Count   0           
+  Receive Packets to Host Count 0           
+  Host Good Packets Transmitted Count 0           
+
+Registers:
+  Phy control                   : 0x00001140, FD, AutoEna, 1000Mbps
+  Phy status                    : 0x0000794D, UP
+  Phy ID1                       : 0x00000141
+  Phy ID2                       : 0x00000C20
+  Autoneg cap advertised        : 0x000005E1, CSMA/CD, 10M HD, 10M FD, 100M HD, 100M FD, Pause
+  Autoneg base page cap         : 0x000001E0
+  Autoneg expanded              : 0x00000000
+  Autoneg next page tx          : 0x00000000
+  Autoneg LP next page          : 0x00000000
+  1000T control                 : 0x00000E00, 1000 FD, Master
+  1000T status                  : 0x00003C00, LocRxOk, RemRxOk, Rem1000T-FD, Rem1000T-HD
+  Extended status               : 0x00000000
+  Port config                   : 0x00000360
+  Port status                   : 0x0000AC00, HD, UP, 100Mbps
+  Port control                  : 0x00000000
+  Link health                   : 0x00000000
+  1000T FIFO                    : 0x00000D60
+  Channel quality               : 0x00000000
+
+HW addr filter: 0xF68D3C0
+
+  Chip address filter[0] 80000200.04000050
+  Chip address filter[1] 80000700.00C28001
+  Chip address filter[2] 8000CCCC.CC0C0001
+  Chip address filter[3] 80000200.00C28001
+  Chip address filter[4] 7FFFFFFF.00000000
+  Chip address filter[5] 7FFFFFFF.00000000
+  Chip address filter[6] 7FFFFFFF.00000000
+  Chip address filter[7] 7FFFFFFF.00000000
+  Chip address filter[8] 7FFFFFFF.00000000
+  Chip address filter[9] 7FFFFFFF.00000000
+  Chip address filter[10] 7FFFFFFF.00000000
+  Chip address filter[11] 7FFFFFFF.00000000
+  Chip address filter[12] 7FFFFFFF.00000000
+  Chip address filter[13] 7FFFFFFF.00000000
+  Chip address filter[14] 7FFFFFFF.00000000
+  Chip address filter[15] 7FFFFFFF.00000000
+  Entry= 0:  Addr=5000.0004.0002
+  Entry= 1:  Addr=0180.C200.0007
+  Entry= 2:  Addr=0100.0CCC.CCCC
+  Entry= 3:  Addr=0180.C200.0002
+  (All other entries are empty)
+
+Software MAC address filter(hash:length/addr/mask/hits)
+-------------------------------------------------------
+  0x00:  0  ffff.ffff.ffff  0000.0000.0000         0
+  0x02:  0  5000.0004.0002  0000.0000.0000         0
+  0xC0:  0  0100.0ccc.cccc  0000.0000.0000         3
+  0xC0:  1  0180.c200.0002  0000.0000.0000         0
+  0xC5:  0  0180.c200.0007  0000.0000.0000         0
+
+  Software filtered frames: 0
+  unicast overflow mode on
+  multicast overflow mode on
+  Promiscuous mode on
+Interface GigabitEthernet0/3 (idb 0xF6E4548)
+Hardware is iGbE 
+ Register base address: 0xFEAA0000
+ PCI REV: A3
+  network link is up  
+  loopback type is none
+
+= Media  RJ45 =
+
+Media Change Count: 0
+
+MAC registers:
+  CTRL  =0x00000040, STATUS=0x80080783, CTRL_X=0x00000000, IMS   =0x00000091
+  EECD  =0x00000188, EERD  =0x03000210  ETT   =0x00000000, TXDMAC=0x00000000
+  RCTL  =0x0040803A, RDBAL =0x094D5000, RDBAH =0x00000000, RDLEN =0x00008000
+  RDH   =0x00000000, RDT   =0x000007FF, RDTR  =0x00000020, RLPML =0x00000000
+  RFCTL =0x00000000
+  TCTL  =0x000400FA, TDBAL =0x094DE000, TDBAH =0x00000000, TDLEN =0x00008000
+  TDH   =0x00000625, TDT   =0x00000625, TIPG  =0x00000000
+  TDWAH   =0x00000000, TDWAL   =0x00000000
+  FCRTH =0x00000000, FCRTL =0x00000000
+  FCAH  =0x00000000, FCAL  =0x00000000, FCT   =0x00000000, FCTTV =0x00000000
+  RDFH  =0x00000000, RDFT  =0x00000000, RDFPC =0x00000000
+  TDFH  =0x00000000, TDFT  =0x00000000, TDFPC =0x00000000
+  RDFHS =0x00000000, RDFTS =0x00000000, RXDCTL=0x00000000
+  TDFHS =0x00000000, TDFTS =0x00000000, TXDCTL=0x01020204
+  RXCSUM=0x00000000, TIDV=0x00000000
+  PCS_CFG   =0x00000000, PCS_LCTL=0x00000000, PCS_LSTS =0x00000000
+  PCS_ANADV =0x00000000, PCS_LPAB=0x00000000, PCS_NPTX =0x00000000
+  PCS_LPABNP=0x00000000, I2CCMD  =0x00000000, I2CPARAMS=0x00000000
+
+Register decodes:
+  Status              : 0x80080783, FD, UP, 1000Mbps, Auto1000Mbps, PCI
+  Control register    : 0x00000040, HD, SetLinkUP, 10Mbs
+  Control register ext: 0x00000000, Copper
+
+  Rxdescriptor addr=0984F200 len=00000000, stat=00000000
+  Txdescriptor addr=06D5DB4A cmd/len=0B0000B0, stat=00000001
+  RX is  enabled, TX is  enabled
+  Device status = full-duplex, link up
+  PCI width = 32, PCI66=0, PCIX=0, PCIXSPD is 50-66MHz  Device Speed = 1000Mbps
+
+PCI configuration registers:
+  bus_no=0, device_no=5, subdevice 0
+  DeviceID=0x100E, VendorID=0x8086, Command=0x0106, Status=0x0000
+  Class=0x02/0x00/0x00, Revision=0x03, LatencyTimer=0x00, CacheLineSize=0x00
+  BaseAddr0=0xFEAA0000, BaseAddr1=0x0000C0C1, MaxLat=0x00,MinGnt=0x00
+  SubsysDeviceID=0x1100, SubsysVendorID=0x1AF4
+ Interrupt Line 0x0A, Pin 0x01
+  Cap_Ptr=0x00000000  Retry/TRDY Timeout=0x00000000
+  PMC=0x00000000  PMCSR=0x00000000
+  DEVCTRL=0x00000000
+
+Internal Driver Information:
+  lc_ip_turbo_fs=0x229CBD0, ip_routecache=0x11(dfs=0/mdfs=0)
+  i82576_ds=0xF5C49F8, registers=0xFEAA0000
+  rx cache size=2048, rx cache end=0, rx_nobuffer=0
+  max_mtu=1524
+  ring sizes: RX=2048, TX=2048
+  rxring=0x94D5000, shadow=0xF6E61B8, head=0, rx_buf_size=2048
+  txring=0x94DE000, shadow=0xF6E81E8, sw_tdh=1573, tail=1573
+  chip_state=2, pci_rev=3
+  tx_count=0, tx_ring_max=2048, tx_limited=0 (cur ring size 2048)
+  rx_overrun=0, rx_seq=0, rx_no_enp=0, rx_discard=0
+  throttled=0, enabled=0, disabled=0, bypassed=0
+  reset=2(init=1, check=0, restart=1, pci=0), auto_restart=2
+  link_reset=0, tx_carrier_loss=0, fatal_tx_err=0
+  wait_for_last_tdt=0, rx_stuck=0
+  tx_stuck=0,  rx_max_spin=1,  rr_port_next=2
+
+Statistics:
+  CRC error        0             Symbol error     0           
+  Missed Packets   0             Excessive Coll   0           
+  Multiple Coll    0             Length Error     0           
+  Late Coll        0             Collision        0           
+  Defer            0             Receive Length   0           
+  XON RX           0           
+  XON TX           0             XOFF RX          0           
+  XOFF TX          0             FC RX Unsupport  0           
+  Packet RX (64)   0             Packet RX (127)  0           
+  Packet RX (255)  0             Packet RX (511)  0           
+  Packet RX (1023) 0             Packet RX (1522) 0           
+  Good Packet RX   0             Broadcast RX     0           
+  Multicast RX     0             Good Packet TX   5669        
+  Good Octets RX.H 0             Good Octets RX.L 0           
+  Good Octets TX.H 0             Good Octets TX.L 0           
+  RX No Buff       0             RX Undersize     0           
+  RX Fragment      0             RX Oversize      0           
+  RX Octets High   0             RX Octets Low    0           
+  TX Octets High   0             TX Octets Low    639476      
+  TX Packet        5669          RX Packet        0           
+  TX Broadcast     0             TX Multicast     0           
+  Packet TX (64)   0             Packet TX (127)  0           
+  Packet TX (255)  0             Packet TX (511)  0           
+  Packet TX (1023) 0             Packet TX (1522) 0           
+  TX No CSR        0           
+  RX Error Count   0             TCP Segmentation 0           
+  Host Trasmit Discarded packets by MAC Count  0           
+  Interrupt Assertion Count   0           
+  Receive Packets to Host Count 0           
+  Host Good Packets Transmitted Count 0           
+
+Registers:
+  Phy control                   : 0x00001140, FD, AutoEna, 1000Mbps
+  Phy status                    : 0x0000794D, UP
+  Phy ID1                       : 0x00000141
+  Phy ID2                       : 0x00000C20
+  Autoneg cap advertised        : 0x000005E1, CSMA/CD, 10M HD, 10M FD, 100M HD, 100M FD, Pause
+  Autoneg base page cap         : 0x000001E0
+  Autoneg expanded              : 0x00000000
+  Autoneg next page tx          : 0x00000000
+  Autoneg LP next page          : 0x00000000
+  1000T control                 : 0x00000E00, 1000 FD, Master
+  1000T status                  : 0x00003C00, LocRxOk, RemRxOk, Rem1000T-FD, Rem1000T-HD
+  Extended status               : 0x00000000
+  Port config                   : 0x00000360
+  Port status                   : 0x0000AC00, HD, UP, 100Mbps
+  Port control                  : 0x00000000
+  Link health                   : 0x00000000
+  1000T FIFO                    : 0x00000D60
+  Channel quality               : 0x00000000
+
+HW addr filter: 0xF6EC218
+
+  Chip address filter[0] 80000300.04000050
+  Chip address filter[1] 80000700.00C28001
+  Chip address filter[2] 8000CCCC.CC0C0001
+  Chip address filter[3] 80000200.00C28001
+  Chip address filter[4] 7FFFFFFF.00000000
+  Chip address filter[5] 7FFFFFFF.00000000
+  Chip address filter[6] 7FFFFFFF.00000000
+  Chip address filter[7] 7FFFFFFF.00000000
+  Chip address filter[8] 7FFFFFFF.00000000
+  Chip address filter[9] 7FFFFFFF.00000000
+  Chip address filter[10] 7FFFFFFF.00000000
+  Chip address filter[11] 7FFFFFFF.00000000
+  Chip address filter[12] 7FFFFFFF.00000000
+  Chip address filter[13] 7FFFFFFF.00000000
+  Chip address filter[14] 7FFFFFFF.00000000
+  Chip address filter[15] 7FFFFFFF.00000000
+  Entry= 0:  Addr=5000.0004.0003
+  Entry= 1:  Addr=0180.C200.0007
+  Entry= 2:  Addr=0100.0CCC.CCCC
+  Entry= 3:  Addr=0180.C200.0002
+  (All other entries are empty)
+
+Software MAC address filter(hash:length/addr/mask/hits)
+-------------------------------------------------------
+  0x00:  0  ffff.ffff.ffff  0000.0000.0000         0
+  0x03:  0  5000.0004.0003  0000.0000.0000         0
+  0xC0:  0  0100.0ccc.cccc  0000.0000.0000         3
+  0xC0:  1  0180.c200.0002  0000.0000.0000         0
+  0xC5:  0  0180.c200.0007  0000.0000.0000         0
+
+  Software filtered frames: 0
+  unicast overflow mode on
+  multicast overflow mode on
+  Promiscuous mode on
+Interface GigabitEthernet1/0 (idb 0xF742530)
+Hardware is iGbE 
+ Register base address: 0xFEAE0000
+ PCI REV: A3
+  network link is up  
+  loopback type is none
+
+= Media  RJ45 =
+
+Media Change Count: 0
+
+MAC registers:
+  CTRL  =0x00000040, STATUS=0x80080783, CTRL_X=0x00000000, IMS   =0x00000091
+  EECD  =0x00000188, EERD  =0x04000210  ETT   =0x00000000, TXDMAC=0x00000000
+  RCTL  =0x0040803A, RDBAL =0x09F31000, RDBAH =0x00000000, RDLEN =0x00008000
+  RDH   =0x00000000, RDT   =0x000007FF, RDTR  =0x00000020, RLPML =0x00000000
+  RFCTL =0x00000000
+  TCTL  =0x000400FA, TDBAL =0x09F3A000, TDBAH =0x00000000, TDLEN =0x00008000
+  TDH   =0x00000625, TDT   =0x00000625, TIPG  =0x00000000
+  TDWAH   =0x00000000, TDWAL   =0x00000000
+  FCRTH =0x00000000, FCRTL =0x00000000
+  FCAH  =0x00000000, FCAL  =0x00000000, FCT   =0x00000000, FCTTV =0x00000000
+  RDFH  =0x00000000, RDFT  =0x00000000, RDFPC =0x00000000
+  TDFH  =0x00000000, TDFT  =0x00000000, TDFPC =0x00000000
+  RDFHS =0x00000000, RDFTS =0x00000000, RXDCTL=0x00000000
+  TDFHS =0x00000000, TDFTS =0x00000000, TXDCTL=0x01020204
+  RXCSUM=0x00000000, TIDV=0x00000000
+  PCS_CFG   =0x00000000, PCS_LCTL=0x00000000, PCS_LSTS =0x00000000
+  PCS_ANADV =0x00000000, PCS_LPAB=0x00000000, PCS_NPTX =0x00000000
+  PCS_LPABNP=0x00000000, I2CCMD  =0x00000000, I2CPARAMS=0x00000000
+
+Register decodes:
+  Status              : 0x80080783, FD, UP, 1000Mbps, Auto1000Mbps, PCI
+  Control register    : 0x00000040, HD, SetLinkUP, 10Mbs
+  Control register ext: 0x00000000, Copper
+
+  Rxdescriptor addr=0A2AB200 len=00000000, stat=00000000
+  Txdescriptor addr=06D60D4A cmd/len=0B0000B0, stat=00000001
+  RX is  enabled, TX is  enabled
+  Device status = full-duplex, link up
+  PCI width = 32, PCI66=0, PCIX=0, PCIXSPD is 50-66MHz  Device Speed = 1000Mbps
+
+PCI configuration registers:
+  bus_no=0, device_no=6, subdevice 0
+  DeviceID=0x100E, VendorID=0x8086, Command=0x0106, Status=0x0000
+  Class=0x02/0x00/0x00, Revision=0x03, LatencyTimer=0x00, CacheLineSize=0x00
+  BaseAddr0=0xFEAE0000, BaseAddr1=0x0000C101, MaxLat=0x00,MinGnt=0x00
+  SubsysDeviceID=0x1100, SubsysVendorID=0x1AF4
+ Interrupt Line 0x0A, Pin 0x01
+  Cap_Ptr=0x00000000  Retry/TRDY Timeout=0x00000000
+  PMC=0x00000000  PMCSR=0x00000000
+  DEVCTRL=0x00000000
+
+Internal Driver Information:
+  lc_ip_turbo_fs=0x229CBD0, ip_routecache=0x11(dfs=0/mdfs=0)
+  i82576_ds=0xF5C4ED8, registers=0xFEAE0000
+  rx cache size=2048, rx cache end=0, rx_nobuffer=0
+  max_mtu=1524
+  ring sizes: RX=2048, TX=2048
+  rxring=0x9F31000, shadow=0xF7441A0, head=0, rx_buf_size=2048
+  txring=0x9F3A000, shadow=0xF7461D0, sw_tdh=1573, tail=1573
+  chip_state=2, pci_rev=3
+  tx_count=0, tx_ring_max=2048, tx_limited=0 (cur ring size 2048)
+  rx_overrun=0, rx_seq=0, rx_no_enp=0, rx_discard=0
+  throttled=0, enabled=0, disabled=0, bypassed=0
+  reset=2(init=1, check=0, restart=1, pci=0), auto_restart=2
+  link_reset=0, tx_carrier_loss=0, fatal_tx_err=0
+  wait_for_last_tdt=0, rx_stuck=0
+  tx_stuck=0,  rx_max_spin=1,  rr_port_next=3
+
+Statistics:
+  CRC error        0             Symbol error     0           
+  Missed Packets   0             Excessive Coll   0           
+  Multiple Coll    0             Length Error     0           
+  Late Coll        0             Collision        0           
+  Defer            0             Receive Length   0           
+  XON RX           0           
+  XON TX           0             XOFF RX          0           
+  XOFF TX          0             FC RX Unsupport  0           
+  Packet RX (64)   0             Packet RX (127)  0           
+  Packet RX (255)  0             Packet RX (511)  0           
+  Packet RX (1023) 0             Packet RX (1522) 0           
+  Good Packet RX   0             Broadcast RX     0           
+  Multicast RX     0             Good Packet TX   5669        
+  Good Octets RX.H 0             Good Octets RX.L 0           
+  Good Octets TX.H 0             Good Octets TX.L 0           
+  RX No Buff       0             RX Undersize     0           
+  RX Fragment      0             RX Oversize      0           
+  RX Octets High   0             RX Octets Low    0           
+  TX Octets High   0             TX Octets Low    639476      
+  TX Packet        5669          RX Packet        0           
+  TX Broadcast     0             TX Multicast     0           
+  Packet TX (64)   0             Packet TX (127)  0           
+  Packet TX (255)  0             Packet TX (511)  0           
+  Packet TX (1023) 0             Packet TX (1522) 0           
+  TX No CSR        0           
+  RX Error Count   0             TCP Segmentation 0           
+  Host Trasmit Discarded packets by MAC Count  0           
+  Interrupt Assertion Count   0           
+  Receive Packets to Host Count 0           
+  Host Good Packets Transmitted Count 0           
+
+Registers:
+  Phy control                   : 0x00001140, FD, AutoEna, 1000Mbps
+  Phy status                    : 0x0000794D, UP
+  Phy ID1                       : 0x00000141
+  Phy ID2                       : 0x00000C20
+  Autoneg cap advertised        : 0x000005E1, CSMA/CD, 10M HD, 10M FD, 100M HD, 100M FD, Pause
+  Autoneg base page cap         : 0x000001E0
+  Autoneg expanded              : 0x00000000
+  Autoneg next page tx          : 0x00000000
+  Autoneg LP next page          : 0x00000000
+  1000T control                 : 0x00000E00, 1000 FD, Master
+  1000T status                  : 0x00003C00, LocRxOk, RemRxOk, Rem1000T-FD, Rem1000T-HD
+  Extended status               : 0x00000000
+  Port config                   : 0x00000360
+  Port status                   : 0x0000AC00, HD, UP, 100Mbps
+  Port control                  : 0x00000000
+  Link health                   : 0x00000000
+  1000T FIFO                    : 0x00000D60
+  Channel quality               : 0x00000000
+
+HW addr filter: 0xF74A200
+
+  Chip address filter[0] 80000400.04000050
+  Chip address filter[1] 80000700.00C28001
+  Chip address filter[2] 8000CCCC.CC0C0001
+  Chip address filter[3] 80000200.00C28001
+  Chip address filter[4] 7FFFFFFF.00000000
+  Chip address filter[5] 7FFFFFFF.00000000
+  Chip address filter[6] 7FFFFFFF.00000000
+  Chip address filter[7] 7FFFFFFF.00000000
+  Chip address filter[8] 7FFFFFFF.00000000
+  Chip address filter[9] 7FFFFFFF.00000000
+  Chip address filter[10] 7FFFFFFF.00000000
+  Chip address filter[11] 7FFFFFFF.00000000
+  Chip address filter[12] 7FFFFFFF.00000000
+  Chip address filter[13] 7FFFFFFF.00000000
+  Chip address filter[14] 7FFFFFFF.00000000
+  Chip address filter[15] 7FFFFFFF.00000000
+  Entry= 0:  Addr=5000.0004.0004
+  Entry= 1:  Addr=0180.C200.0007
+  Entry= 2:  Addr=0100.0CCC.CCCC
+  Entry= 3:  Addr=0180.C200.0002
+  (All other entries are empty)
+
+Software MAC address filter(hash:length/addr/mask/hits)
+-------------------------------------------------------
+  0x00:  0  ffff.ffff.ffff  0000.0000.0000         0
+  0x04:  0  5000.0004.0004  0000.0000.0000         0
+  0xC0:  0  0100.0ccc.cccc  0000.0000.0000         3
+  0xC0:  1  0180.c200.0002  0000.0000.0000         0
+  0xC5:  0  0180.c200.0007  0000.0000.0000         0
+
+  Software filtered frames: 0
+  unicast overflow mode on
+  multicast overflow mode on
+  Promiscuous mode on
+Interface GigabitEthernet1/1 (idb 0xF7A0530)
+Hardware is iGbE 
+ Register base address: 0xFEB20000
+ PCI REV: A3
+  network link is up  
+  loopback type is none
+
+= Media  RJ45 =
+
+Media Change Count: 0
+
+MAC registers:
+  CTRL  =0x00000040, STATUS=0x80080783, CTRL_X=0x00000000, IMS   =0x00000091
+  EECD  =0x00000188, EERD  =0x05000210  ETT   =0x00000000, TXDMAC=0x00000000
+  RCTL  =0x0040803A, RDBAL =0x0A98D000, RDBAH =0x00000000, RDLEN =0x00008000
+  RDH   =0x00000000, RDT   =0x000007FF, RDTR  =0x00000020, RLPML =0x00000000
+  RFCTL =0x00000000
+  TCTL  =0x000400FA, TDBAL =0x0A996000, TDBAH =0x00000000, TDLEN =0x00008000
+  TDH   =0x00000626, TDT   =0x00000626, TIPG  =0x00000000
+  TDWAH   =0x00000000, TDWAL   =0x00000000
+  FCRTH =0x00000000, FCRTL =0x00000000
+  FCAH  =0x00000000, FCAL  =0x00000000, FCT   =0x00000000, FCTTV =0x00000000
+  RDFH  =0x00000000, RDFT  =0x00000000, RDFPC =0x00000000
+  TDFH  =0x00000000, TDFT  =0x00000000, TDFPC =0x00000000
+  RDFHS =0x00000000, RDFTS =0x00000000, RXDCTL=0x00000000
+  TDFHS =0x00000000, TDFTS =0x00000000, TXDCTL=0x01020204
+  RXCSUM=0x00000000, TIDV=0x00000000
+  PCS_CFG   =0x00000000, PCS_LCTL=0x00000000, PCS_LSTS =0x00000000
+  PCS_ANADV =0x00000000, PCS_LPAB=0x00000000, PCS_NPTX =0x00000000
+  PCS_LPABNP=0x00000000, I2CCMD  =0x00000000, I2CPARAMS=0x00000000
+
+Register decodes:
+  Status              : 0x80080783, FD, UP, 1000Mbps, Auto1000Mbps, PCI
+  Control register    : 0x00000040, HD, SetLinkUP, 10Mbs
+  Control register ext: 0x00000000, Copper
+
+  Rxdescriptor addr=0AD07200 len=00000000, stat=00000000
+  Txdescriptor addr=06D5BF2A cmd/len=0B0000B0, stat=00000001
+  RX is  enabled, TX is  enabled
+  Device status = full-duplex, link up
+  PCI width = 32, PCI66=0, PCIX=0, PCIXSPD is 50-66MHz  Device Speed = 1000Mbps
+
+PCI configuration registers:
+  bus_no=0, device_no=7, subdevice 0
+  DeviceID=0x100E, VendorID=0x8086, Command=0x0106, Status=0x0000
+  Class=0x02/0x00/0x00, Revision=0x03, LatencyTimer=0x00, CacheLineSize=0x00
+  BaseAddr0=0xFEB20000, BaseAddr1=0x0000C141, MaxLat=0x00,MinGnt=0x00
+  SubsysDeviceID=0x1100, SubsysVendorID=0x1AF4
+ Interrupt Line 0x0B, Pin 0x01
+  Cap_Ptr=0x00000000  Retry/TRDY Timeout=0x00000000
+  PMC=0x00000000  PMCSR=0x00000000
+  DEVCTRL=0x00000000
+
+Internal Driver Information:
+  lc_ip_turbo_fs=0x229CBD0, ip_routecache=0x11(dfs=0/mdfs=0)
+  i82576_ds=0xF5C53B8, registers=0xFEB20000
+  rx cache size=2048, rx cache end=0, rx_nobuffer=0
+  max_mtu=1524
+  ring sizes: RX=2048, TX=2048
+  rxring=0xA98D000, shadow=0xF7A21A0, head=0, rx_buf_size=2048
+  txring=0xA996000, shadow=0xF7A41D0, sw_tdh=1574, tail=1574
+  chip_state=2, pci_rev=3
+  tx_count=0, tx_ring_max=2048, tx_limited=0 (cur ring size 2048)
+  rx_overrun=0, rx_seq=0, rx_no_enp=0, rx_discard=0
+  throttled=0, enabled=0, disabled=0, bypassed=0
+  reset=2(init=1, check=0, restart=1, pci=0), auto_restart=2
+  link_reset=0, tx_carrier_loss=0, fatal_tx_err=0
+  wait_for_last_tdt=0, rx_stuck=0
+  tx_stuck=0,  rx_max_spin=1,  rr_port_next=4
+
+Statistics:
+  CRC error        0             Symbol error     0           
+  Missed Packets   0             Excessive Coll   0           
+  Multiple Coll    0             Length Error     0           
+  Late Coll        0             Collision        0           
+  Defer            0             Receive Length   0           
+  XON RX           0           
+  XON TX           0             XOFF RX          0           
+  XOFF TX          0             FC RX Unsupport  0           
+  Packet RX (64)   0             Packet RX (127)  0           
+  Packet RX (255)  0             Packet RX (511)  0           
+  Packet RX (1023) 0             Packet RX (1522) 0           
+  Good Packet RX   0             Broadcast RX     0           
+  Multicast RX     0             Good Packet TX   5670        
+  Good Octets RX.H 0             Good Octets RX.L 0           
+  Good Octets TX.H 0             Good Octets TX.L 0           
+  RX No Buff       0             RX Undersize     0           
+  RX Fragment      0             RX Oversize      0           
+  RX Octets High   0             RX Octets Low    0           
+  TX Octets High   0             TX Octets Low    639832      
+  TX Packet        5670          RX Packet        0           
+  TX Broadcast     0             TX Multicast     0           
+  Packet TX (64)   0             Packet TX (127)  0           
+  Packet TX (255)  0             Packet TX (511)  0           
+  Packet TX (1023) 0             Packet TX (1522) 0           
+  TX No CSR        0           
+  RX Error Count   0             TCP Segmentation 0           
+  Host Trasmit Discarded packets by MAC Count  0           
+  Interrupt Assertion Count   0           
+  Receive Packets to Host Count 0           
+  Host Good Packets Transmitted Count 0           
+
+Registers:
+  Phy control                   : 0x00001140, FD, AutoEna, 1000Mbps
+  Phy status                    : 0x0000794D, UP
+  Phy ID1                       : 0x00000141
+  Phy ID2                       : 0x00000C20
+  Autoneg cap advertised        : 0x000005E1, CSMA/CD, 10M HD, 10M FD, 100M HD, 100M FD, Pause
+  Autoneg base page cap         : 0x000001E0
+  Autoneg expanded              : 0x00000000
+  Autoneg next page tx          : 0x00000000
+  Autoneg LP next page          : 0x00000000
+  1000T control                 : 0x00000E00, 1000 FD, Master
+  1000T status                  : 0x00003C00, LocRxOk, RemRxOk, Rem1000T-FD, Rem1000T-HD
+  Extended status               : 0x00000000
+  Port config                   : 0x00000360
+  Port status                   : 0x0000AC00, HD, UP, 100Mbps
+  Port control                  : 0x00000000
+  Link health                   : 0x00000000
+  1000T FIFO                    : 0x00000D60
+  Channel quality               : 0x00000000
+
+HW addr filter: 0xF7A8200
+
+  Chip address filter[0] 80000500.04000050
+  Chip address filter[1] 80000700.00C28001
+  Chip address filter[2] 8000CCCC.CC0C0001
+  Chip address filter[3] 80000200.00C28001
+  Chip address filter[4] 7FFFFFFF.00000000
+  Chip address filter[5] 7FFFFFFF.00000000
+  Chip address filter[6] 7FFFFFFF.00000000
+  Chip address filter[7] 7FFFFFFF.00000000
+  Chip address filter[8] 7FFFFFFF.00000000
+  Chip address filter[9] 7FFFFFFF.00000000
+  Chip address filter[10] 7FFFFFFF.00000000
+  Chip address filter[11] 7FFFFFFF.00000000
+  Chip address filter[12] 7FFFFFFF.00000000
+  Chip address filter[13] 7FFFFFFF.00000000
+  Chip address filter[14] 7FFFFFFF.00000000
+  Chip address filter[15] 7FFFFFFF.00000000
+  Entry= 0:  Addr=5000.0004.0005
+  Entry= 1:  Addr=0180.C200.0007
+  Entry= 2:  Addr=0100.0CCC.CCCC
+  Entry= 3:  Addr=0180.C200.0002
+  (All other entries are empty)
+
+Software MAC address filter(hash:length/addr/mask/hits)
+-------------------------------------------------------
+  0x00:  0  ffff.ffff.ffff  0000.0000.0000         0
+  0x05:  0  5000.0004.0005  0000.0000.0000         0
+  0xC0:  0  0100.0ccc.cccc  0000.0000.0000         3
+  0xC0:  1  0180.c200.0002  0000.0000.0000         0
+  0xC5:  0  0180.c200.0007  0000.0000.0000         0
+
+  Software filtered frames: 0
+  unicast overflow mode on
+  multicast overflow mode on
+  Promiscuous mode on
+Interface GigabitEthernet1/2 (idb 0xF7FF388)
+Hardware is iGbE 
+ Register base address: 0xFEB60000
+ PCI REV: A3
+  network link is up  
+  loopback type is none
+
+= Media  RJ45 =
+
+Media Change Count: 0
+
+MAC registers:
+  CTRL  =0x00000040, STATUS=0x80080783, CTRL_X=0x00000000, IMS   =0x00000091
+  EECD  =0x00000188, EERD  =0x06000210  ETT   =0x00000000, TXDMAC=0x00000000
+  RCTL  =0x0040803A, RDBAL =0x0B3E9000, RDBAH =0x00000000, RDLEN =0x00008000
+  RDH   =0x00000000, RDT   =0x000007FF, RDTR  =0x00000020, RLPML =0x00000000
+  RFCTL =0x00000000
+  TCTL  =0x000400FA, TDBAL =0x0B3F2000, TDBAH =0x00000000, TDLEN =0x00008000
+  TDH   =0x00000626, TDT   =0x00000626, TIPG  =0x00000000
+  TDWAH   =0x00000000, TDWAL   =0x00000000
+  FCRTH =0x00000000, FCRTL =0x00000000
+  FCAH  =0x00000000, FCAL  =0x00000000, FCT   =0x00000000, FCTTV =0x00000000
+  RDFH  =0x00000000, RDFT  =0x00000000, RDFPC =0x00000000
+  TDFH  =0x00000000, TDFT  =0x00000000, TDFPC =0x00000000
+  RDFHS =0x00000000, RDFTS =0x00000000, RXDCTL=0x00000000
+  TDFHS =0x00000000, TDFTS =0x00000000, TXDCTL=0x01020204
+  RXCSUM=0x00000000, TIDV=0x00000000
+  PCS_CFG   =0x00000000, PCS_LCTL=0x00000000, PCS_LSTS =0x00000000
+  PCS_ANADV =0x00000000, PCS_LPAB=0x00000000, PCS_NPTX =0x00000000
+  PCS_LPABNP=0x00000000, I2CCMD  =0x00000000, I2CPARAMS=0x00000000
+
+Register decodes:
+  Status              : 0x80080783, FD, UP, 1000Mbps, Auto1000Mbps, PCI
+  Control register    : 0x00000040, HD, SetLinkUP, 10Mbs
+  Control register ext: 0x00000000, Copper
+
+  Rxdescriptor addr=0B763200 len=00000000, stat=00000000
+  Txdescriptor addr=06D283A7 cmd/len=0B00003C, stat=00000001
+  RX is  enabled, TX is  enabled
+  Device status = full-duplex, link up
+  PCI width = 32, PCI66=0, PCIX=0, PCIXSPD is 50-66MHz  Device Speed = 1000Mbps
+
+PCI configuration registers:
+  bus_no=0, device_no=8, subdevice 0
+  DeviceID=0x100E, VendorID=0x8086, Command=0x0106, Status=0x0000
+  Class=0x02/0x00/0x00, Revision=0x03, LatencyTimer=0x00, CacheLineSize=0x00
+  BaseAddr0=0xFEB60000, BaseAddr1=0x0000C181, MaxLat=0x00,MinGnt=0x00
+  SubsysDeviceID=0x1100, SubsysVendorID=0x1AF4
+ Interrupt Line 0x0B, Pin 0x01
+  Cap_Ptr=0x00000000  Retry/TRDY Timeout=0x00000000
+  PMC=0x00000000  PMCSR=0x00000000
+  DEVCTRL=0x00000000
+
+Internal Driver Information:
+  lc_ip_turbo_fs=0x229CBD0, ip_routecache=0x11(dfs=0/mdfs=0)
+  i82576_ds=0xF5C5898, registers=0xFEB60000
+  rx cache size=2048, rx cache end=0, rx_nobuffer=0
+  max_mtu=1524
+  ring sizes: RX=2048, TX=2048
+  rxring=0xB3E9000, shadow=0xF800FF8, head=0, rx_buf_size=2048
+  txring=0xB3F2000, shadow=0xF803028, sw_tdh=1574, tail=1574
+  chip_state=2, pci_rev=3
+  tx_count=0, tx_ring_max=2048, tx_limited=0 (cur ring size 2048)
+  rx_overrun=0, rx_seq=0, rx_no_enp=0, rx_discard=0
+  throttled=0, enabled=0, disabled=0, bypassed=0
+  reset=2(init=1, check=0, restart=1, pci=0), auto_restart=2
+  link_reset=0, tx_carrier_loss=0, fatal_tx_err=0
+  wait_for_last_tdt=0, rx_stuck=0
+  tx_stuck=0,  rx_max_spin=1,  rr_port_next=5
+
+Statistics:
+  CRC error        0             Symbol error     0           
+  Missed Packets   0             Excessive Coll   0           
+  Multiple Coll    0             Length Error     0           
+  Late Coll        0             Collision        0           
+  Defer            0             Receive Length   0           
+  XON RX           0           
+  XON TX           0             XOFF RX          0           
+  XOFF TX          0             FC RX Unsupport  0           
+  Packet RX (64)   0             Packet RX (127)  0           
+  Packet RX (255)  0             Packet RX (511)  0           
+  Packet RX (1023) 0             Packet RX (1522) 0           
+  Good Packet RX   0             Broadcast RX     0           
+  Multicast RX     0             Good Packet TX   5670        
+  Good Octets RX.H 0             Good Octets RX.L 0           
+  Good Octets TX.H 0             Good Octets TX.L 0           
+  RX No Buff       0             RX Undersize     0           
+  RX Fragment      0             RX Oversize      0           
+  RX Octets High   0             RX Octets Low    0           
+  TX Octets High   0             TX Octets Low    639832      
+  TX Packet        5670          RX Packet        0           
+  TX Broadcast     0             TX Multicast     0           
+  Packet TX (64)   0             Packet TX (127)  0           
+  Packet TX (255)  0             Packet TX (511)  0           
+  Packet TX (1023) 0             Packet TX (1522) 0           
+  TX No CSR        0           
+  RX Error Count   0             TCP Segmentation 0           
+  Host Trasmit Discarded packets by MAC Count  0           
+  Interrupt Assertion Count   0           
+  Receive Packets to Host Count 0           
+  Host Good Packets Transmitted Count 0           
+
+Registers:
+  Phy control                   : 0x00001140, FD, AutoEna, 1000Mbps
+  Phy status                    : 0x0000794D, UP
+  Phy ID1                       : 0x00000141
+  Phy ID2                       : 0x00000C20
+  Autoneg cap advertised        : 0x000005E1, CSMA/CD, 10M HD, 10M FD, 100M HD, 100M FD, Pause
+  Autoneg base page cap         : 0x000001E0
+  Autoneg expanded              : 0x00000000
+  Autoneg next page tx          : 0x00000000
+  Autoneg LP next page          : 0x00000000
+  1000T control                 : 0x00000E00, 1000 FD, Master
+  1000T status                  : 0x00003C00, LocRxOk, RemRxOk, Rem1000T-FD, Rem1000T-HD
+  Extended status               : 0x00000000
+  Port config                   : 0x00000360
+  Port status                   : 0x0000AC00, HD, UP, 100Mbps
+  Port control                  : 0x00000000
+  Link health                   : 0x00000000
+  1000T FIFO                    : 0x00000D60
+  Channel quality               : 0x00000000
+
+HW addr filter: 0xF807058
+
+  Chip address filter[0] 80000600.04000050
+  Chip address filter[1] 80000700.00C28001
+  Chip address filter[2] 8000CCCC.CC0C0001
+  Chip address filter[3] 80000200.00C28001
+  Chip address filter[4] 7FFFFFFF.00000000
+  Chip address filter[5] 7FFFFFFF.00000000
+  Chip address filter[6] 7FFFFFFF.00000000
+  Chip address filter[7] 7FFFFFFF.00000000
+  Chip address filter[8] 7FFFFFFF.00000000
+  Chip address filter[9] 7FFFFFFF.00000000
+  Chip address filter[10] 7FFFFFFF.00000000
+  Chip address filter[11] 7FFFFFFF.00000000
+  Chip address filter[12] 7FFFFFFF.00000000
+  Chip address filter[13] 7FFFFFFF.00000000
+  Chip address filter[14] 7FFFFFFF.00000000
+  Chip address filter[15] 7FFFFFFF.00000000
+  Entry= 0:  Addr=5000.0004.0006
+  Entry= 1:  Addr=0180.C200.0007
+  Entry= 2:  Addr=0100.0CCC.CCCC
+  Entry= 3:  Addr=0180.C200.0002
+  (All other entries are empty)
+
+Software MAC address filter(hash:length/addr/mask/hits)
+-------------------------------------------------------
+  0x00:  0  ffff.ffff.ffff  0000.0000.0000         0
+  0x06:  0  5000.0004.0006  0000.0000.0000         0
+  0xC0:  0  0100.0ccc.cccc  0000.0000.0000         3
+  0xC0:  1  0180.c200.0002  0000.0000.0000         0
+  0xC5:  0  0180.c200.0007  0000.0000.0000         0
+
+  Software filtered frames: 0
+  unicast overflow mode on
+  multicast overflow mode on
+  Promiscuous mode on
+Interface GigabitEthernet1/3 (idb 0xF85D370)
+Hardware is iGbE 
+ Register base address: 0xFEBA0000
+ PCI REV: A3
+  network link is up  
+  loopback type is none
+
+= Media  RJ45 =
+
+Media Change Count: 0
+
+MAC registers:
+  CTRL  =0x00000040, STATUS=0x80080783, CTRL_X=0x00000000, IMS   =0x00000091
+  EECD  =0x00000188, EERD  =0x07000210  ETT   =0x00000000, TXDMAC=0x00000000
+  RCTL  =0x0040803A, RDBAL =0x0BE45000, RDBAH =0x00000000, RDLEN =0x00008000
+  RDH   =0x00000000, RDT   =0x000007FF, RDTR  =0x00000020, RLPML =0x00000000
+  RFCTL =0x00000000
+  TCTL  =0x000400FA, TDBAL =0x0BE4E000, TDBAH =0x00000000, TDLEN =0x00008000
+  TDH   =0x00000626, TDT   =0x00000626, TIPG  =0x00000000
+  TDWAH   =0x00000000, TDWAL   =0x00000000
+  FCRTH =0x00000000, FCRTL =0x00000000
+  FCAH  =0x00000000, FCAL  =0x00000000, FCT   =0x00000000, FCTTV =0x00000000
+  RDFH  =0x00000000, RDFT  =0x00000000, RDFPC =0x00000000
+  TDFH  =0x00000000, TDFT  =0x00000000, TDFPC =0x00000000
+  RDFHS =0x00000000, RDFTS =0x00000000, RXDCTL=0x00000000
+  TDFHS =0x00000000, TDFTS =0x00000000, TXDCTL=0x01020204
+  RXCSUM=0x00000000, TIDV=0x00000000
+  PCS_CFG   =0x00000000, PCS_LCTL=0x00000000, PCS_LSTS =0x00000000
+  PCS_ANADV =0x00000000, PCS_LPAB=0x00000000, PCS_NPTX =0x00000000
+  PCS_LPABNP=0x00000000, I2CCMD  =0x00000000, I2CPARAMS=0x00000000
+
+Register decodes:
+  Status              : 0x80080783, FD, UP, 1000Mbps, Auto1000Mbps, PCI
+  Control register    : 0x00000040, HD, SetLinkUP, 10Mbs
+  Control register ext: 0x00000000, Copper
+
+  Rxdescriptor addr=0C1BF200 len=00000000, stat=00000000
+  Txdescriptor addr=06D28767 cmd/len=0B00003C, stat=00000001
+  RX is  enabled, TX is  enabled
+  Device status = full-duplex, link up
+  PCI width = 32, PCI66=0, PCIX=0, PCIXSPD is 50-66MHz  Device Speed = 1000Mbps
+
+PCI configuration registers:
+  bus_no=0, device_no=9, subdevice 0
+  DeviceID=0x100E, VendorID=0x8086, Command=0x0106, Status=0x0000
+  Class=0x02/0x00/0x00, Revision=0x03, LatencyTimer=0x00, CacheLineSize=0x00
+  BaseAddr0=0xFEBA0000, BaseAddr1=0x0000C1C1, MaxLat=0x00,MinGnt=0x00
+  SubsysDeviceID=0x1100, SubsysVendorID=0x1AF4
+ Interrupt Line 0x0A, Pin 0x01
+  Cap_Ptr=0x00000000  Retry/TRDY Timeout=0x00000000
+  PMC=0x00000000  PMCSR=0x00000000
+  DEVCTRL=0x00000000
+
+Internal Driver Information:
+  lc_ip_turbo_fs=0x229CBD0, ip_routecache=0x11(dfs=0/mdfs=0)
+  i82576_ds=0xF5C5D78, registers=0xFEBA0000
+  rx cache size=2048, rx cache end=0, rx_nobuffer=0
+  max_mtu=1524
+  ring sizes: RX=2048, TX=2048
+  rxring=0xBE45000, shadow=0xF85EFE0, head=0, rx_buf_size=2048
+  txring=0xBE4E000, shadow=0xF861010, sw_tdh=1574, tail=1574
+  chip_state=2, pci_rev=3
+  tx_count=0, tx_ring_max=2048, tx_limited=0 (cur ring size 2048)
+  rx_overrun=0, rx_seq=0, rx_no_enp=0, rx_discard=0
+  throttled=0, enabled=0, disabled=0, bypassed=0
+  reset=2(init=1, check=0, restart=1, pci=0), auto_restart=2
+  link_reset=0, tx_carrier_loss=0, fatal_tx_err=0
+  wait_for_last_tdt=0, rx_stuck=0
+  tx_stuck=0,  rx_max_spin=1,  rr_port_next=6
+
+Statistics:
+  CRC error        0             Symbol error     0           
+  Missed Packets   0             Excessive Coll   0           
+  Multiple Coll    0             Length Error     0           
+  Late Coll        0             Collision        0           
+  Defer            0             Receive Length   0           
+  XON RX           0           
+  XON TX           0             XOFF RX          0           
+  XOFF TX          0             FC RX Unsupport  0           
+  Packet RX (64)   0             Packet RX (127)  0           
+  Packet RX (255)  0             Packet RX (511)  0           
+  Packet RX (1023) 0             Packet RX (1522) 0           
+  Good Packet RX   0             Broadcast RX     0           
+  Multicast RX     0             Good Packet TX   5670        
+  Good Octets RX.H 0             Good Octets RX.L 0           
+  Good Octets TX.H 0             Good Octets TX.L 0           
+  RX No Buff       0             RX Undersize     0           
+  RX Fragment      0             RX Oversize      0           
+  RX Octets High   0             RX Octets Low    0           
+  TX Octets High   0             TX Octets Low    639832      
+  TX Packet        5670          RX Packet        0           
+  TX Broadcast     0             TX Multicast     0           
+  Packet TX (64)   0             Packet TX (127)  0           
+  Packet TX (255)  0             Packet TX (511)  0           
+  Packet TX (1023) 0             Packet TX (1522) 0           
+  TX No CSR        0           
+  RX Error Count   0             TCP Segmentation 0           
+  Host Trasmit Discarded packets by MAC Count  0           
+  Interrupt Assertion Count   0           
+  Receive Packets to Host Count 0           
+  Host Good Packets Transmitted Count 0           
+
+Registers:
+  Phy control                   : 0x00001140, FD, AutoEna, 1000Mbps
+  Phy status                    : 0x0000794D, UP
+  Phy ID1                       : 0x00000141
+  Phy ID2                       : 0x00000C20
+  Autoneg cap advertised        : 0x000005E1, CSMA/CD, 10M HD, 10M FD, 100M HD, 100M FD, Pause
+  Autoneg base page cap         : 0x000001E0
+  Autoneg expanded              : 0x00000000
+  Autoneg next page tx          : 0x00000000
+  Autoneg LP next page          : 0x00000000
+  1000T control                 : 0x00000E00, 1000 FD, Master
+  1000T status                  : 0x00003C00, LocRxOk, RemRxOk, Rem1000T-FD, Rem1000T-HD
+  Extended status               : 0x00000000
+  Port config                   : 0x00000360
+  Port status                   : 0x0000AC00, HD, UP, 100Mbps
+  Port control                  : 0x00000000
+  Link health                   : 0x00000000
+  1000T FIFO                    : 0x00000D60
+  Channel quality               : 0x00000000
+
+HW addr filter: 0xF865040
+
+  Chip address filter[0] 80000700.04000050
+  Chip address filter[1] 80000700.00C28001
+  Chip address filter[2] 8000CCCC.CC0C0001
+  Chip address filter[3] 80000200.00C28001
+  Chip address filter[4] 7FFFFFFF.00000000
+  Chip address filter[5] 7FFFFFFF.00000000
+  Chip address filter[6] 7FFFFFFF.00000000
+  Chip address filter[7] 7FFFFFFF.00000000
+  Chip address filter[8] 7FFFFFFF.00000000
+  Chip address filter[9] 7FFFFFFF.00000000
+  Chip address filter[10] 7FFFFFFF.00000000
+  Chip address filter[11] 7FFFFFFF.00000000
+  Chip address filter[12] 7FFFFFFF.00000000
+  Chip address filter[13] 7FFFFFFF.00000000
+  Chip address filter[14] 7FFFFFFF.00000000
+  Chip address filter[15] 7FFFFFFF.00000000
+  Entry= 0:  Addr=5000.0004.0007
+  Entry= 1:  Addr=0180.C200.0007
+  Entry= 2:  Addr=0100.0CCC.CCCC
+  Entry= 3:  Addr=0180.C200.0002
+  (All other entries are empty)
+
+Software MAC address filter(hash:length/addr/mask/hits)
+-------------------------------------------------------
+  0x00:  0  ffff.ffff.ffff  0000.0000.0000         0
+  0x07:  0  5000.0004.0007  0000.0000.0000         0
+  0xC0:  0  0100.0ccc.cccc  0000.0000.0000         3
+  0xC0:  1  0180.c200.0002  0000.0000.0000         0
+  0xC5:  0  0180.c200.0007  0000.0000.0000         0
+
+  Software filtered frames: 0
+  unicast overflow mode on
+  multicast overflow mode on
+  Promiscuous mode on
+
+------------------ show user ------------------
+
+
+    Line       User       Host(s)              Idle       Location
+   2 vty 0     admin      idle                 00:00:05

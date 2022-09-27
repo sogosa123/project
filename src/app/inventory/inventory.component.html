@@ -1,0 +1,71 @@
+<mat-card >
+  <mat-card  class="text-center round1" style="outline-style: outset ; outline-color:rgb(150, 69, 162);">
+    <h1 >Inventory</h1>
+  </mat-card>
+
+  <mat-card class="p-4 mt-4">
+    <button class="m-2" mat-raised-button color="primary" (click)="fileDownload()" >Download <mat-icon>save_alt</mat-icon></button>
+
+    <button class="" mat-raised-button color="warn"  (click)="loadData()">
+      <mat-icon>refresh</mat-icon>
+      Refresh
+    </button>
+
+    <button mat-raised-button style="float: right;" (click)="openPopup()"><mat-icon>note</mat-icon>Note</button>
+
+    <table  class="table table-bordered border-dark">
+      <thead>
+        <tr style="background-color: rgb(188, 97, 233);">
+          <th scope="col">Hostname</th>
+          <th scope="col">IP Address</th>
+          <th scope="col">Up Time</th>
+          <th scope="col">Serial Number</th>
+          <th scope="col">MAC Address</th>
+          <th scope="col">Model</th>
+          <th scope="col">Version</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let us of readData">
+          <th scope="row">{{ us.hostname }}</th>
+          <td>{{ us.ip }}</td>
+          <td>{{ us.uptime }}</td>
+          <td>{{ us.serialnumber }}</td>
+          <td>{{ us.macaddress }}</td>
+          <td>{{ us.model }}</td>
+          <td>{{ us.version }}</td>
+
+        </tr>
+      </tbody>
+
+    </table>
+      <button mat-raised-button class="btn-warning" style="float:right;" (click)="onClickDelete()"><mat-icon> clear_all</mat-icon>Clear All</button>
+  </mat-card>
+
+</mat-card>
+
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Note</h2>
+      </div>
+      <div class="modal-body">
+        <h2> These information come from backups. If you want the latest information please. Press the backup button on the backup page.
+        </h2>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>

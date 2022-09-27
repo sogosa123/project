@@ -1,0 +1,17 @@
+
+
+<mat-sidenav-container fullscreen >
+    <mat-sidenav #sidenav mode="over"  class="text-center">
+        <app-sidenav ></app-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <app-header  (navToggle)="sidenav.toggle()"></app-header>
+          
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+
