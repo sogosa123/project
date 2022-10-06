@@ -23,7 +23,7 @@ const connection = mysql.createConnection({
     user: 'root',
     password: '12345678',
     database: 'test_db'
-    
+
 })
 
 connection.connect((err) => {
@@ -67,7 +67,7 @@ app.get("/getbackup", async(req, res) => {
             }
             return res.status(201).json(results)
         })
-    } 
+    }
     catch(err) {
         console.log(err);
         return res.status(500).send();
@@ -83,10 +83,10 @@ app.put("/gettrue/:id", async(req, res) => {
                 console.log("Error while inserting a user into the database", err);
                 return res.status(400).send();
             }
-            
+
             return res.status(201).json({ message: "OK"});
         })
-    } 
+    }
     catch(err) {
         console.log(err);
         return res.status(500).send();
@@ -96,7 +96,7 @@ app.put("/gettrue/:id", async(req, res) => {
 //get true
 app.put("/gettrue", async(req, res) => {
     try {
-        
+
         connection.query("UPDATE devices SET backup='1' ", (err, results, fields) => {
             if (err) {
                 console.log(err);
@@ -104,7 +104,7 @@ app.put("/gettrue", async(req, res) => {
             }
             return res.status(201).json({ message: "all"})
         })
-    } 
+    }
     catch(err) {
         console.log(err);
         return res.status(500).send();
@@ -122,7 +122,7 @@ app.delete("/deletebackup/:id", async(req, res) => {
                 console.log("Error while inserting a user into the database", err);
                 return res.status(400).send();
             }
-            return res.status(201).json({ message: "DELETED"});  
+            return res.status(201).json({ message: "DELETED"});
         })
     }
     catch(err) {
@@ -142,7 +142,7 @@ app.get("/download/:id", async(req, res) => {
             }
             return res.status(201).json(results)
         })
-    } 
+    }
     catch(err) {
         console.log(err);
         return res.status(500).send();
@@ -152,7 +152,7 @@ app.get("/download/:id", async(req, res) => {
 
 app.get("/getget", async(req, res) => {
     try {
-        
+
         connection.query("SELECT devices.id, devices.ip, devices.user, file_backup.file_name, file_backup.device_id , inventory.hostname FROM devices LEFT JOIN file_backup ON devices.id = file_backup.device_id LEFT JOIN inventory ON devices.id = inventory.device_id ", (err, results, fields) => {
             if (err) {
                 console.log(err);
@@ -160,7 +160,7 @@ app.get("/getget", async(req, res) => {
             }
             return res.status(201).json(results)
         })
-    } 
+    }
     catch(err) {
         console.log(err);
         return res.status(500).send();
@@ -204,7 +204,7 @@ app.get("/config/get", async(req, res) => {
             }
             return res.status(201).json(results)
         })
-    } 
+    }
     catch(err) {
         console.log(err);
         return res.status(500).send();
@@ -220,7 +220,7 @@ app.delete("/config/delete/:id", async(req, res) => {
                 console.log("Error while inserting a user into the database", err);
                 return res.status(400).send();
             }
-            return res.status(201).json({ message: "DELETEDIP"});  
+            return res.status(201).json({ message: "DELETEDIP"});
         })
     }
     catch(err) {
@@ -232,7 +232,7 @@ app.delete("/config/delete/:id", async(req, res) => {
 //show ip int br
 app.get("/config/shipintbr/", async(req, res) => {
     try {
-        
+
         connection.query("SELECT sh_ip_int_br,id FROM `show_commands` ", (err, results, fields) => {
             if (err) {
                 console.log(err);
@@ -240,7 +240,7 @@ app.get("/config/shipintbr/", async(req, res) => {
             }
             return res.status(201).json(results)
         })
-    } 
+    }
     catch(err) {
         console.log(err);
         return res.status(500).send();
@@ -256,10 +256,10 @@ app.put("/shipintbr/:id", async(req, res) => {
                 console.log("Error while inserting a user into the database", err);
                 return res.status(400).send();
             }
-            
+
             return res.status(201).json({ message: "OKK"});
         })
-    } 
+    }
     catch(err) {
         console.log(err);
         return res.status(500).send();
@@ -275,7 +275,7 @@ app.delete("/config/delete/showip/:device_id", async(req, res) => {
                 console.log("Error while inserting a user into the database", err);
                 return res.status(400).send();
             }
-            return res.status(201).json({ message: "DELETEDIPs"});  
+            return res.status(201).json({ message: "DELETEDIPs"});
         })
     }
     catch(err) {
@@ -296,7 +296,7 @@ app.get("/join/:id", async(req, res) => {
             }
             return res.status(201).json(results)
         })
-    } 
+    }
     catch(err) {
         console.log(err);
         return res.status(500).send();
@@ -357,7 +357,7 @@ app.post("/createvlan", async (req, res) => {
 // ----------------------------------------  Inventory  --------------------------------------------------------
 app.get("/inventory", async(req, res) => {
     try {
-        
+
         connection.query("SELECT * FROM `inventory` ", (err, results, fields) => {
             if (err) {
                 console.log(err);
@@ -365,7 +365,7 @@ app.get("/inventory", async(req, res) => {
             }
             return res.status(201).json(results)
         })
-    } 
+    }
     catch(err) {
         console.log(err);
         return res.status(500).send();
@@ -374,16 +374,16 @@ app.get("/inventory", async(req, res) => {
 
 app.put("/refresh", async(req, res) => {
     try {
-        
+
         connection.query("UPDATE devices SET backup='1' " , (err, results, fields) => {
             if (err) {
                 console.log("Error while inserting a user into the database", err);
                 return res.status(400).send();
             }
-            
+
             return res.status(201).json({ message: "RE"});
         })
-    } 
+    }
     catch(err) {
         console.log(err);
         return res.status(500).send();
@@ -392,13 +392,13 @@ app.put("/refresh", async(req, res) => {
 
 app.delete("/deleteinventory", async(req, res) => {
     try {
-        
+
         connection.query("DELETE FROM inventory", (err, results, fields) => {
             if (err) {
                 console.log("Error while inserting a user into the database", err);
                 return res.status(400).send();
             }
-            return res.status(201).json({ message: "delAll"});  
+            return res.status(201).json({ message: "delAll"});
         })
     }
     catch(err) {
@@ -409,6 +409,6 @@ app.delete("/deleteinventory", async(req, res) => {
 
 
 
-app.listen(1150, () => console.log('Server is running'));
+app.listen(3000, () => console.log('Server is running'));
 
 
