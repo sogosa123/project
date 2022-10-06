@@ -1,6 +1,6 @@
 <form (ngSubmit)="postConfig()" [formGroup]="configu">
   <mat-card>
-    <mat-card class="text-center round1" style="outline-style: outset ; outline-color:rgb(150, 69, 162);">
+    <mat-card class="text-center round1 bg" style="outline-style: outset ; outline-color:rgb(150, 69, 162);">
       <h1>Configuration</h1>
     </mat-card>
     <div class="d-flex justify-content-center align-items-center mt-5">
@@ -42,7 +42,7 @@
 </form>
 
 <mat-card>
-  <button  mat-raised-button  type="click" style="float:right;" (click)="openPopup1()" class="btn btn-success m-3">Config VLAN</button>
+  <button  mat-raised-button  type="click" style="float:right;" (click)="openPopup1()" class="btn-success m-3">Config VLAN</button>
   <table class="table table-bordered border-dark table table-hover  table-striped">
     <thead>
       <tr class=" table-bordered border-dark " style="background-color: rgb(188, 97, 233);" >
@@ -150,7 +150,7 @@
               </mat-step>
               <mat-step [stepControl]="secondFormGroup">
                 <form  [formGroup]="vlanfrm">
-                  <ng-template matStepLabel>VLAN</ng-template>
+                  <ng-template matStepLabel>VLAN ( Create multiple VLAN => ex. 10,20,30 )</ng-template>
                   <mat-form-field appearance="outline">
                     <mat-label>Create VLAN</mat-label>
                     <input matInput placeholder="Ex. 1 , 10 , 20" formControlName="intvlan" required>
@@ -198,10 +198,10 @@
                 </mat-step>
                 <mat-step [stepControl]="secondFormGroup">
                   <form  [formGroup]="vlanfrm">
-                    <ng-template matStepLabel>Choose Interface</ng-template>
+                    <ng-template matStepLabel>Choose Interface (Ex. fa0/1 , gi0/1 or range fa0/1-10)</ng-template>
                     <mat-form-field appearance="outline">
                       <mat-label>Interface</mat-label>
-                      <input matInput placeholder="Ex. fa0/1 , gi0/1" formControlName="interface" required>
+                      <input matInput placeholder="Ex. fa0/1 , gi0/1 or range fa0/1-10" formControlName="interface" required>
                     </mat-form-field>
                     <div>
                       <button mat-button matStepperNext>Next</button>

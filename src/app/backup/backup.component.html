@@ -1,12 +1,13 @@
-<form (ngSubmit)="backupAlert()" [formGroup]="frm">
+<form (ngSubmit)="insertBackup()" [formGroup]="frm">
   <mat-spinner  *ngIf = "showSpinner">
 
   </mat-spinner>
 <mat-card >
-  <mat-card  class="round1" style="outline-style: outset ; outline-color:rgb(150, 69, 162);">
+  <mat-card  class="round1 bg" style="outline-style: outset ; outline-color:rgb(150, 69, 162);">
     <h1 class="text-center">Back Up</h1>
   </mat-card>
-<div class="d-flex justify-content-center align-items-center mt-5">
+
+<div class="d-flex justify-content-center align-items-center mt-4">
 
     <mat-form-field appearance="outline" class="w-25 p-3">
       <mat-label>IP address</mat-label>
@@ -78,7 +79,7 @@
 
         <a  mat-raised-button color="primary" class="m-2 rounded-pill"  (click)="updateTrue(us.id)"  type="click" [class.spinner]="loading" [disabled]="loading" (click)="save()" style="float:right;" >Back up
           <mat-icon>settings_backup_restore</mat-icon></a>
-        <a  mat-raised-button color="accent" class="m-2 rounded-pill" href="../../assets/{{us.file_name}}" download = "{{us.file_name}}" style="float:right;">Download
+        <a  mat-raised-button color="accent" class="m-2 rounded-pill" href="assets/{{ us.file_name }}"  download = "{{us.file_name}}" style="float:right;">Download
           <mat-icon>save_alt</mat-icon></a>
 
     </td>
@@ -105,9 +106,9 @@
       </div>
       <div class="modal-body">
         <h2> 1. Fill in the information of the device you want to back up and press submit.<br>
-          2. Click on <img src="../../assets/backupbt.png" ><br>
+          2. Click on <img src="assets/backupbt.png" ><br>
           3. Wait time for backup <br>
-          4. You can download the file by pressing <img src="../../assets/downloadbt.png" > <br>
+          4. You can download the file by pressing <img src="assets/downloadbt.png" > <br>
           <h2 class="text-danger">( If you cannot download the file, please refresh the web page. )</h2>
         </h2>
 

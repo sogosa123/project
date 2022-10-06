@@ -23,6 +23,11 @@ export class ApiserviceService {
 
    ////////////////////////////////////////BACK UP///////////////////////////////////////
 
+   getGet():Observable<any>
+   {
+    return this.http.get(`${this.apiUrl}/getget`);
+   }
+
    getAllData():Observable<any>
    {
     return this.http.get(`${this.apiUrl}/getbackup`);
@@ -90,10 +95,7 @@ export class ApiserviceService {
    {
     return this.http.get(`${this.apiUrl}/download`);
    }
-   getGet():Observable<any>
-   {
-    return this.http.get(`${this.apiUrl}/getget`);
-   }
+
 
    vlan(vlanfrm :any): Observable<any>
    {

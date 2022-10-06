@@ -51,7 +51,7 @@ export class BackupComponent implements OnInit {
     });
   }
 
-  backupAlert() {
+  insertBackup() {
     this.service.backupData(this.frm.value).subscribe({
       next: (res) => {
         if (res.message == 'successfully') {
@@ -187,4 +187,6 @@ export class BackupComponent implements OnInit {
     this.displayStyle = "none";
     window.location.reload();
   }
+
+
 }
